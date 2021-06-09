@@ -3,54 +3,62 @@ import styled from "styled-components";
 
 interface Props {
   name: string;
-  icon: string;
+  icon?: string;
   description: string;
-  downloadLink?: string;
+  url?: string;
+  status?: string;
 }
 
-const AppItem: React.FC<Props> = ({
-  name,
-  icon,
-  description,
-  downloadLink,
-}) => {
+const WebItem: React.FC<Props> = ({ name, icon, description, url, status }) => {
   return (
-    <AppItemBlock>
-      <AppIcon src={icon} />
+    <WebIteBlock>
+      <WebIcon>
+        <WebIconText>R</WebIconText>
+      </WebIcon>
       <TextContainer>
-        <AppName>{name}</AppName>
+        <Name>{name}</Name>
         <Description>{description}</Description>
 
-        {downloadLink ? (
+        {url ? (
           <DownloadButtonWrapper>
-            <a href={downloadLink} target="_blank" rel="noreferrer">
+            <a href={url} target="_blank" rel="noreferrer">
               <DownloadButton>
-                <DownloadText>다운로드</DownloadText>
+                <DownloadText>바로가기</DownloadText>
               </DownloadButton>
             </a>
           </DownloadButtonWrapper>
         ) : (
           <DownloadButtonWrapper>
             <DownloadButton>
-              <DownloadText>SOON</DownloadText>
+              <DownloadText>{status || "SOON"}</DownloadText>
             </DownloadButton>
           </DownloadButtonWrapper>
         )}
       </TextContainer>
-    </AppItemBlock>
+    </WebIteBlock>
   );
 };
 
-export default AppItem;
+export default WebItem;
 
-const AppItemBlock = styled.div`
+const WebIteBlock = styled.div`
   display: flex;
 `;
 
-const AppIcon = styled.img`
+const WebIcon = styled.div`
   height: 100px;
   width: 100px;
   border-radius: 8px;
+  background-color: #16161f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const WebIconText = styled.span`
+  font-size: 2rem;
+  font-weight: bold;
+  color: #e28a18;
 `;
 
 const TextContainer = styled.div`
@@ -58,7 +66,7 @@ const TextContainer = styled.div`
   margin-left: 16px;
 `;
 
-const AppName = styled.h3`
+const Name = styled.h3`
   color: #fff;
   margin: 0;
 `;

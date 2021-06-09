@@ -7,6 +7,8 @@ interface Props {
   Kimp: React.ReactElement;
   Maple: React.ReactElement;
   Water: React.ReactElement;
+  RiseOfKingdom: React.ReactElement;
+  CookieRunKingdom: React.ReactElement;
 }
 
 const HomePageTemplate: React.FC<Props> = ({
@@ -14,6 +16,8 @@ const HomePageTemplate: React.FC<Props> = ({
   Kimp,
   Maple,
   Water,
+  RiseOfKingdom,
+  CookieRunKingdom,
   Footer,
 }) => {
   return (
@@ -30,6 +34,13 @@ const HomePageTemplate: React.FC<Props> = ({
             <AppList>
               <AppListItemWrapper>{Water}</AppListItemWrapper>
               <AppListItemWrapper></AppListItemWrapper>
+            </AppList>
+          </AppListBox>
+          <AppListBox>
+            <AppListTitle>Webs</AppListTitle>
+            <AppList>
+              <AppListItemWrapper>{CookieRunKingdom}</AppListItemWrapper>
+              <AppListItemWrapper>{RiseOfKingdom}</AppListItemWrapper>
             </AppList>
           </AppListBox>
         </Container>
@@ -57,6 +68,7 @@ const Container = styled.div`
 `;
 
 const AppListBox = styled.div`
+  padding-top: 16px;
   margin: 0 auto;
   max-width: 800px;
 `;
@@ -69,7 +81,8 @@ const AppList = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 72px 0;
+  margin-top: 42px;
+  margin-bottom: 72px;
 
   @media (max-width: 1000px) {
     margin: 0;

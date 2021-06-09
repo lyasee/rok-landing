@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "../basic/Footer";
 import Header from "../basic/Header";
 import AppItem from "../component/AppItem";
+import WebItem from "../component/WebItem";
 import HomePageTemplate from "../home/HomePageTemplate";
 
 const HomePage: React.FC = () => {
@@ -31,6 +32,20 @@ const HomePage: React.FC = () => {
           icon="/images/icon/water_appicon.png"
           description="10초만에 물타기"
           downloadLink=""
+        />
+      }
+      RiseOfKingdom={
+        <WebItem
+          name="라이즈 오브 킹덤즈"
+          description="라오킹 티어표"
+          status="서비스 종료"
+        />
+      }
+      CookieRunKingdom={
+        <WebItem
+          name="쿠키런 킹덤"
+          description="쿠키런 티어표"
+          url="http://ck.rok.gg"
         />
       }
     />
