@@ -31,7 +31,7 @@ const HomePage: React.FC = () => {
           name="물타기 - scale trading"
           icon="/images/icon/water_appicon.png"
           description="10초만에 물타기"
-          downloadLink=""
+          downloadLink="https://addwater.page.link/default"
         />
       }
       RiseOfKingdom={
