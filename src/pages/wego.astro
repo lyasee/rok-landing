@@ -1,0 +1,323 @@
+---
+import "@/styles/global.css";
+
+const title = "Wego(위고) — 함께 달리는 그룹 라이딩 내비게이션";
+const description =
+  "Wego는 여러 명이 함께 목적지까지 이동할 때 실시간 위치 공유와 턴바이턴 음성 길안내로 아무도 길을 잃지 않게 돕는 그룹 라이딩 내비게이션 앱입니다.";
+const keywords =
+  "위고,Wego,그룹 라이딩,그룹 주행,내비게이션,길안내,실시간 위치 공유,라이딩,동호회,단체 주행,알오케이지지,ROKGG";
+const url = "https://rok.gg/wego";
+
+const features = [
+  {
+    icon: "🧭",
+    name: "턴바이턴 길안내",
+    desc: "실시간 교통정보를 반영한 음성 내비게이션으로 목적지까지 안내합니다.",
+  },
+  {
+    icon: "📍",
+    name: "실시간 그룹 위치 공유",
+    desc: "함께 달리는 멤버 모두의 위치를 지도 위에 실시간으로 표시합니다.",
+  },
+  {
+    icon: "👥",
+    name: "대열 관리",
+    desc: "뒤처지거나 경로를 벗어난 멤버를 자동으로 감지하고, ‘기다려’로 선두를 멈춰 세웁니다.",
+  },
+  {
+    icon: "🎙️",
+    name: "그룹 무전",
+    desc: "주행 중에도 핸즈프리 음성으로 일행과 바로 대화할 수 있습니다.",
+  },
+  {
+    icon: "🚨",
+    name: "안전운전 정보",
+    desc: "전방 과속 단속 카메라와 제한속도를 미리 알려 안전한 주행을 돕습니다.",
+  },
+  {
+    icon: "🚩",
+    name: "집결지·경로 공유",
+    desc: "출발 전 집결지와 경로를 함께 정하고, 같은 코스로 다 같이 이동합니다.",
+  },
+];
+
+const shots = [
+  { src: "/images/wego/nav.png", alt: "Wego 턴바이턴 내비게이션 화면 — 그룹 대열 표시와 진행 방향" },
+  { src: "/images/wego/convoy.png", alt: "Wego 대열 관리 화면 — 뒤처진 멤버 알림" },
+  { src: "/images/wego/camera.png", alt: "Wego 안전운전 화면 — 과속 단속 카메라 경고" },
+];
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#3182f6" />
+    <meta name="title" content={title} />
+    <meta name="keywords" content={keywords} />
+    <meta name="publisher" content="알오케이지지" />
+    <meta name="author" content="알오케이지지" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content="/images/wego/icon.png" />
+    <link rel="canonical" href={url} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="page wego">
+      <header class="header">
+        <a href="/" class="home-link"><h4>알오케이지지</h4></a>
+      </header>
+
+      <main>
+        <!-- 히어로 -->
+        <section class="hero">
+          <img class="hero-icon" src="/images/wego/icon.png" alt="Wego 앱 아이콘" width="112" height="112" />
+          <h1 class="hero-title">Wego<span class="hero-kr">위고</span></h1>
+          <p class="hero-tagline">함께 달리는 그룹 라이딩 내비게이션</p>
+          <p class="hero-desc">{description}</p>
+          <div class="badges">
+            <span class="badge">iOS · Android</span>
+            <span class="badge badge-soon">출시 준비 중</span>
+          </div>
+        </section>
+
+        <!-- 핵심 기능 -->
+        <section class="band">
+          <div class="wrap">
+            <h2>핵심 기능</h2>
+            <div class="feature-grid">
+              {
+                features.map((f) => (
+                  <article class="feature">
+                    <div class="feature-icon" aria-hidden="true">
+                      {f.icon}
+                    </div>
+                    <h3>{f.name}</h3>
+                    <p>{f.desc}</p>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+        </section>
+
+        <!-- 스크린샷 -->
+        <section class="band band-alt">
+          <div class="wrap">
+            <h2>화면 미리보기</h2>
+            <div class="shots">
+              {
+                shots.map((s) => (
+                  <figure class="shot">
+                    <img src={s.src} alt={s.alt} loading="lazy" width="280" height="560" />
+                  </figure>
+                ))
+              }
+            </div>
+          </div>
+        </section>
+
+        <!-- 소개 -->
+        <section class="band">
+          <div class="wrap narrow">
+            <h2>서비스 소개</h2>
+            <p class="prose">
+              라이딩·드라이브를 여럿이 함께할 때 가장 큰 어려움은 ‘흩어짐’입니다. 신호에 끊기고, 갈림길에서
+              놓치고, 누가 뒤처졌는지 알기 어렵습니다. Wego는 그룹 전원이 같은 목적지를 향해 달리는 동안
+              <strong>실시간 위치 공유</strong>, <strong>턴바이턴 음성 길안내</strong>,
+              <strong>그룹 무전</strong>, <strong>대열 관리</strong>를 하나의 화면에서 제공해 아무도 길을 잃지
+              않고 함께 도착하도록 돕습니다.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div>
+          <p class="company">알오케이지지 (ROKGG)</p>
+          <p>
+            <a href="mailto:notice.rokgg@gmail.com">notice.rokgg@gmail.com</a>
+          </p>
+          <p><a href="/wego/privacy">개인정보처리방침</a></p>
+          <p class="copyright">© 2026 ROKGG. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+
+    <style>
+      .wego main {
+        margin: 0 auto;
+      }
+      .home-link h4 {
+        transition: opacity 0.15s ease;
+      }
+      .home-link:hover h4 {
+        opacity: 0.7;
+      }
+
+      /* 히어로 */
+      .hero {
+        text-align: center;
+        padding: 64px 20px 56px;
+        background: radial-gradient(120% 120% at 50% 0%, #2f5fb0 0%, #282c34 60%);
+      }
+      .hero-icon {
+        border-radius: 24px;
+        box-shadow: 0 12px 32px rgba(49, 130, 246, 0.35);
+      }
+      .hero-title {
+        margin: 20px 0 0;
+        color: #fff;
+        font-size: 2.6rem;
+        letter-spacing: -0.02em;
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 12px;
+      }
+      .hero-kr {
+        font-size: 1.1rem;
+        color: #9fc1ff;
+        font-weight: 500;
+      }
+      .hero-tagline {
+        margin: 12px 0 0;
+        color: #cfe0ff;
+        font-size: 1.15rem;
+        font-weight: 600;
+      }
+      .hero-desc {
+        margin: 18px auto 0;
+        max-width: 620px;
+        color: #b8c0cc;
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+      .badges {
+        margin-top: 26px;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .badge {
+        padding: 7px 14px;
+        border-radius: 999px;
+        background-color: #3182f6;
+        color: #fff;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      .badge-soon {
+        background-color: #3a4150;
+        color: #cbd3df;
+      }
+
+      /* 섹션 밴드 */
+      .band {
+        padding: 56px 20px;
+      }
+      .band-alt {
+        background-color: #23262e;
+      }
+      .wrap {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      .wrap.narrow {
+        max-width: 680px;
+      }
+      .band h2 {
+        color: #fff;
+        text-align: center;
+        font-size: 1.6rem;
+        margin: 0 0 36px;
+      }
+
+      /* 기능 그리드 */
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .feature {
+        background-color: #2f333d;
+        border: 1px solid #3a4150;
+        border-radius: 14px;
+        padding: 22px;
+      }
+      .feature-icon {
+        font-size: 1.8rem;
+        line-height: 1;
+      }
+      .feature h3 {
+        color: #fff;
+        margin: 14px 0 8px;
+        font-size: 1.05rem;
+      }
+      .feature p {
+        color: #aab2bf;
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: 1.6;
+      }
+
+      /* 스크린샷 */
+      .shots {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .shot {
+        margin: 0;
+      }
+      .shot img {
+        width: 240px;
+        height: auto;
+        border-radius: 22px;
+        border: 6px solid #16181d;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+        display: block;
+      }
+
+      /* 소개 */
+      .prose {
+        color: #c4ccd8;
+        font-size: 1rem;
+        line-height: 1.9;
+        text-align: center;
+        margin: 0;
+      }
+      .prose strong {
+        color: #9fc1ff;
+        font-weight: 700;
+      }
+
+      /* 푸터 */
+      .footer .company {
+        font-weight: 700;
+      }
+      .footer .copyright {
+        color: #8b95a1;
+        font-size: 0.8rem;
+      }
+
+      @media (max-width: 760px) {
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-title {
+          font-size: 2.1rem;
+        }
+      }
+    </style>
+  </body>
+</html>
