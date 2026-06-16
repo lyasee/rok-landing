@@ -7,6 +7,8 @@ export interface AppProduct {
   icon: string;
   description: string;
   link?: ProductLink;
+  // 내부 소개 페이지 경로(다운로드 링크가 아직 없는 출시 준비 중 앱용).
+  page?: string;
 }
 
 export interface WebProduct {
@@ -17,6 +19,12 @@ export interface WebProduct {
 }
 
 export const appProducts: AppProduct[] = [
+  {
+    name: "위고 - 그룹 라이딩 내비게이션",
+    icon: "/images/wego/icon.png",
+    description: "함께 달리는 그룹 라이딩 내비",
+    page: "/wego",
+  },
   {
     name: "김프 - 김치프리미엄",
     icon: "/images/icon/kimp_appicon.png",
