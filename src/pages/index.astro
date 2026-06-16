@@ -1,0 +1,158 @@
+---
+import { appProducts, webProducts } from "@/data/products";
+import "@/styles/global.css";
+
+const title = "알오케이지지";
+const description = "웹, 앱 개발 전문 알오케이지지";
+const keywords = "알오케이지지,메코디,김프,kimp,물타기";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="title" content={title} />
+    <meta name="keywords" content={keywords} />
+    <meta name="publisher" content={title} />
+    <meta name="author" content={title} />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rok.gg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <h4>알오케이지지</h4>
+      </header>
+
+      <main class="container">
+        <section class="list-box" aria-labelledby="apps-title">
+          <h1 id="apps-title">Apps</h1>
+          <div class="item-list">
+            {
+              appProducts.slice(0, 2).map((product) => (
+                <div class="item-wrapper">
+                  <article class="item">
+                    <img
+                      class="app-icon"
+                      src={product.icon}
+                      alt={`${product.name} 아이콘`}
+                      loading="lazy"
+                      width="100"
+                      height="100"
+                    />
+                    <div class="text-container">
+                      <h3>{product.name}</h3>
+                      <p>{product.description}</p>
+                      <div class="button-wrapper">
+                        {product.link ? (
+                          <a
+                            class="button"
+                            href={product.link.href}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            다운로드
+                          </a>
+                        ) : (
+                          <span class="button">SOON</span>
+                        )}
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              ))
+            }
+          </div>
+          <div class="item-list">
+            {
+              appProducts.slice(2).map((product) => (
+                <div class="item-wrapper">
+                  <article class="item">
+                    <img
+                      class="app-icon"
+                      src={product.icon}
+                      alt={`${product.name} 아이콘`}
+                      loading="lazy"
+                      width="100"
+                      height="100"
+                    />
+                    <div class="text-container">
+                      <h3>{product.name}</h3>
+                      <p>{product.description}</p>
+                      <div class="button-wrapper">
+                        {product.link ? (
+                          <a
+                            class="button"
+                            href={product.link.href}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            다운로드
+                          </a>
+                        ) : (
+                          <span class="button">SOON</span>
+                        )}
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              ))
+            }
+            <div class="item-wrapper"></div>
+          </div>
+        </section>
+
+        <section class="list-box" aria-labelledby="webs-title">
+          <h1 id="webs-title">Webs</h1>
+          <div class="item-list">
+            {
+              webProducts.map((product) => (
+                <div class="item-wrapper">
+                  <article class="item">
+                    <div class="web-icon" aria-hidden="true">
+                      <span>R</span>
+                    </div>
+                    <div class="text-container">
+                      <h3>{product.name}</h3>
+                      <p>{product.description}</p>
+                      <div class="button-wrapper">
+                        {product.url ? (
+                          <a
+                            class="button"
+                            href={product.url}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            바로가기
+                          </a>
+                        ) : (
+                          <span class="button">{product.status ?? "SOON"}</span>
+                        )}
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div>
+          <p>
+            <a href="mailto:notice.rokgg@gmail.com">Contact Us</a>
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
