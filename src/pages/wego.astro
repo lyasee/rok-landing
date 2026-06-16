@@ -42,9 +42,18 @@ const features = [
 ];
 
 const shots = [
-  { src: "/images/wego/nav.png", alt: "Wego 턴바이턴 내비게이션 화면 — 그룹 대열 표시와 진행 방향" },
-  { src: "/images/wego/convoy.png", alt: "Wego 대열 관리 화면 — 뒤처진 멤버 알림" },
-  { src: "/images/wego/camera.png", alt: "Wego 안전운전 화면 — 과속 단속 카메라 경고" },
+  {
+    src: "/images/wego/nav.png",
+    alt: "Wego 턴바이턴 내비게이션 화면 — 그룹 대열 표시와 진행 방향",
+  },
+  {
+    src: "/images/wego/convoy.png",
+    alt: "Wego 대열 관리 화면 — 뒤처진 멤버 알림",
+  },
+  {
+    src: "/images/wego/camera.png",
+    alt: "Wego 안전운전 화면 — 과속 단속 카메라 경고",
+  },
 ];
 ---
 
@@ -78,7 +87,13 @@ const shots = [
       <main>
         <!-- 히어로 -->
         <section class="hero">
-          <img class="hero-icon" src="/images/wego/icon.png" alt="Wego 앱 아이콘" width="112" height="112" />
+          <img
+            class="hero-icon"
+            src="/images/wego/icon.png"
+            alt="Wego 앱 아이콘"
+            width="112"
+            height="112"
+          />
           <h1 class="hero-title">Wego<span class="hero-kr">위고</span></h1>
           <p class="hero-tagline">함께 달리는 그룹 라이딩 내비게이션</p>
           <p class="hero-desc">{description}</p>
@@ -116,7 +131,13 @@ const shots = [
               {
                 shots.map((s) => (
                   <figure class="shot">
-                    <img src={s.src} alt={s.alt} loading="lazy" width="280" height="560" />
+                    <img
+                      src={s.src}
+                      alt={s.alt}
+                      loading="lazy"
+                      width="280"
+                      height="560"
+                    />
                   </figure>
                 ))
               }
@@ -129,11 +150,14 @@ const shots = [
           <div class="wrap narrow">
             <h2>서비스 소개</h2>
             <p class="prose">
-              라이딩·드라이브를 여럿이 함께할 때 가장 큰 어려움은 ‘흩어짐’입니다. 신호에 끊기고, 갈림길에서
-              놓치고, 누가 뒤처졌는지 알기 어렵습니다. Wego는 그룹 전원이 같은 목적지를 향해 달리는 동안
-              <strong>실시간 위치 공유</strong>, <strong>턴바이턴 음성 길안내</strong>,
-              <strong>그룹 무전</strong>, <strong>대열 관리</strong>를 하나의 화면에서 제공해 아무도 길을 잃지
-              않고 함께 도착하도록 돕습니다.
+              라이딩·드라이브를 여럿이 함께할 때 가장 큰 어려움은
+              ‘흩어짐’입니다. 신호에 끊기고, 갈림길에서 놓치고, 누가 뒤처졌는지
+              알기 어렵습니다. Wego는 그룹 전원이 같은 목적지를 향해 달리는 동안
+              <strong>실시간 위치 공유</strong>, <strong
+                >턴바이턴 음성 길안내</strong
+              >,
+              <strong>그룹 무전</strong>, <strong>대열 관리</strong>를 하나의
+              화면에서 제공해 아무도 길을 잃지 않고 함께 도착하도록 돕습니다.
             </p>
           </div>
         </section>
@@ -166,7 +190,11 @@ const shots = [
       .hero {
         text-align: center;
         padding: 64px 20px 56px;
-        background: radial-gradient(120% 120% at 50% 0%, #2f5fb0 0%, #282c34 60%);
+        background: radial-gradient(
+          120% 120% at 50% 0%,
+          #2f5fb0 0%,
+          #282c34 60%
+        );
       }
       .hero-icon {
         border-radius: 24px;
