@@ -73,16 +73,16 @@ test("all screenshot assets load and new pages make no third-party requests", as
   expect(external).toEqual([]);
   expect(errors).toEqual([]);
 });
-test("legal document has working TOC, cross-links, version history and draft noindex", async ({
+test("published legal document has working TOC, cross-links and version history", async ({
   page,
 }) => {
   await page.goto("/mecodi/privacy/");
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
     "content",
-    "noindex,follow",
+    "index,follow",
   );
   await expect(
-    page.getByText("공개 전 검토본", { exact: true }).first(),
+    page.getByText("시행일 2026년 9월 8일", { exact: true }),
   ).toBeVisible();
   for (const anchor of await page
     .locator('.legal-sidebar a[href^="#"]')
@@ -128,14 +128,15 @@ for (const width of [360, 390, 768, 1280])
       ).toBe(true);
     }
   });
-test("sitemap excludes legal drafts and unknown paths return 404", async ({
+test("sitemap includes published legal documents and unknown paths return 404", async ({
   request,
 }) => {
   const sitemap = await request.get("/sitemap.xml");
   expect(sitemap.status()).toBe(200);
   const xml = await sitemap.text();
   expect(xml).toContain("https://rok.gg/mecodi/");
-  expect(xml).not.toContain("/mecodi/privacy/");
+  expect(xml).toContain("https://rok.gg/mecodi/privacy/");
+  expect(xml).toContain("https://rok.gg/mecodi/terms/");
   expect((await request.get("/missing-app-qa/")).status()).toBe(404);
 });
 test("all local links on new pages resolve to an existing page or anchor", async ({
