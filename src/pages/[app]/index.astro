@@ -1,0 +1,190 @@
+---
+import AppLayout from "@/layouts/AppLayout.astro";
+import StoreLinks from "@/components/StoreLinks.astro";
+import { getApps, validateRegistry, type AppInfo } from "@/lib/apps";
+export async function getStaticPaths() {
+  await validateRegistry();
+  return (await getApps()).map((entry) => ({
+    params: { app: entry.data.slug },
+    props: { app: entry.data },
+  }));
+}
+interface Props {
+  app: AppInfo;
+}
+const { app } = Astro.props;
+---
+
+<AppLayout
+  app={app}
+  title={`${app.name} — ${app.tagline}`}
+  description={app.description}
+>
+  <section class="hero shell" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">
+        <span class="status-dot" aria-hidden="true"></span>{app.releaseLabel}
+      </p>
+      <h1 id="hero-title">{app.hero.line1}<br /><em>{app.hero.line2}</em></h1><p
+        class="hero-description"
+      >
+        {app.hero.body}
+      </p>
+      <StoreLinks app={app} /><p class="hero-small">
+        {app.tagline}
+        <span aria-hidden="true">↘</span>
+      </p>
+    </div><div class="hero-visual">
+      <div class="hero-orbit" aria-hidden="true"></div><figure
+        class="phone-frame"
+      >
+        <img
+          src={app.hero.image}
+          alt={app.hero.imageAlt}
+          width={app.hero.width}
+          height={app.hero.height}
+          fetchpriority="high"
+        /><figcaption>{app.copy?.capture ?? "앱 화면 미리보기"}</figcaption>
+      </figure><span class="floating-label"
+        >{app.copy?.floating ?? app.tagline}</span
+      >
+    </div>
+  </section>
+  {
+    app.releaseNote && (
+      <aside class="release-note shell">
+        <>
+          <strong>{app.releaseLabel}</strong>
+          <p>{app.releaseNote}</p>
+        </>
+      </aside>
+    )
+  }
+  <section class="section shell" id="features" aria-labelledby="features-title">
+    <div class="section-heading">
+      <p class="eyebrow">{app.copy?.featuresEyebrow ?? "주요 기능"}</p><h2
+        id="features-title"
+      >
+        {app.copy?.featuresTitle ?? `${app.name}를 소개합니다.`}
+      </h2>
+    </div><div class="feature-grid">
+      {
+        app.features.map((feature, index) => (
+          <article class="feature-card">
+            <>
+              <span class="feature-number">0{index + 1}</span>
+              <h3>{feature.title}</h3>
+              <p>{feature.description}</p>
+            </>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+  {
+    app.screenshots.length > 0 && (
+      <section class="section gallery-section" aria-labelledby="screens-title">
+        <div class="shell">
+          <>
+            <div class="section-heading gallery-heading">
+              <>
+                <div>
+                  <>
+                    <p class="eyebrow">
+                      {app.copy?.galleryEyebrow ?? "앱 미리보기"}
+                    </p>
+                    <h2 id="screens-title">
+                      {app.copy?.galleryTitle ?? "화면으로 살펴보세요."}
+                    </h2>
+                  </>
+                </div>
+                <p class="muted">
+                  실제 앱 화면의 일부를 담았어요.
+                  <br />
+                  작은 화면에서는 옆으로 넘겨보세요.
+                </p>
+              </>
+            </div>
+            <div
+              class="screenshot-gallery"
+              role="region"
+              aria-label="앱 화면 미리보기"
+              tabindex="0"
+            >
+              {app.screenshots.map((shot, index) => (
+                <figure class="screenshot-card">
+                  <figcaption>
+                    <span>0{index + 1}</span>
+                    {shot.caption}
+                  </figcaption>
+                  <div>
+                    <img
+                      src={shot.src}
+                      alt={shot.alt}
+                      width={shot.width}
+                      height={shot.height}
+                      loading="lazy"
+                    />
+                  </div>
+                </figure>
+              ))}
+            </div>
+          </>
+        </div>
+      </section>
+    )
+  }
+  <section class="section shell">
+    <div class="usage-card">
+      <p class="eyebrow">{app.copy?.usageEyebrow ?? "이용 방법"}</p><h2>
+        {app.usage.title}
+      </h2><p class="usage-intro">{app.usage.body}</p><ul>
+        {app.usage.notes.map((note) => <li>{note}</li>)}
+      </ul>
+    </div>
+  </section>
+  <section class="section shell faq-section" aria-labelledby="faq-title">
+    <div class="section-heading">
+      <p class="eyebrow">궁금한 점이 있나요?</p><h2 id="faq-title">
+        미리 알아두세요.
+      </h2>
+    </div><div class="faq-list">
+      {
+        app.faq.map((faq) => (
+          <details>
+            <>
+              <summary>
+                {faq.question}
+                <span aria-hidden="true">+</span>
+              </summary>
+              <p>{faq.answer}</p>
+            </>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+  <section
+    class="download-section"
+    id="download"
+    aria-labelledby="download-title"
+  >
+    <div class="shell">
+      <img src={app.icon} width="72" height="72" alt="" loading="lazy" /><p
+        class="eyebrow"
+      >
+        {app.name}
+      </p><h2 id="download-title">
+        {app.copy?.downloadTitle ?? `${app.name}, 지금 만나보세요.`}
+      </h2><p>지금 쓰는 휴대폰의 스토어에서 만나보세요.</p><StoreLinks
+        app={app}
+      /><p class="download-note">
+        {
+          app.launchStatus === "preview"
+            ? "현재 버튼은 기존 공개 버전의 스토어 페이지로 연결됩니다."
+            : "기기와 지역에 따라 스토어 제공 여부가 다를 수 있습니다."
+        }
+      </p>
+    </div>
+  </section>
+</AppLayout>

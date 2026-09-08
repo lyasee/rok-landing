@@ -1,0 +1,115 @@
+{
+  "slug": "mecodi",
+  "name": "메코디",
+  "listingName": "메코디 - 코디 시뮬레이터",
+  "tagline": "내 캐릭터, 내 취향대로",
+  "description": "헤어와 아이템을 골라 코디를 미리 보고, 표정과 자세까지 바꿔보세요. 마음에 드는 조합은 슬롯과 PNG로 간직하는 메이플 코디 시뮬레이터입니다.",
+  "visible": true,
+  "order": 20,
+  "accent": "#c44708",
+  "icon": "/images/icon/maple_appicon.png",
+  "launchStatus": "preview",
+  "releaseLabel": "메코디 2.0 미리보기",
+  "releaseNote": "이 페이지는 재출시를 준비 중인 2.0의 실제 개발 화면과 이용 방식을 소개합니다. Google Play 버튼은 기존 공개 버전으로 연결되며 화면과 기능은 다를 수 있습니다. iOS는 스토어 재공개를 준비 중입니다.",
+  "hero": {
+    "line1": "입어보고 싶은 코디,",
+    "line2": "먼저 여기서.",
+    "body": "헤어 하나, 모자 하나 바꿔가며 내 취향을 찾아보세요. 마음에 드는 조합은 저장해 두고 언제든 다시 꺼내 입어요.",
+    "image": "/images/mecodi/home.webp",
+    "imageAlt": "메코디 2.0 Android 실제 코디룸 화면. 도트 캐릭터와 아이템 고르기, 슬롯 저장 버튼",
+    "width": 720,
+    "height": 1457
+  },
+  "stores": {
+    "googlePlay": "https://play.google.com/store/apps/details?id=com.lyasee.maple",
+    "appStore": "https://apps.apple.com/kr/app/id1568920118"
+  },
+  "features": [
+    {
+      "title": "찾고, 눌러서 입어보기",
+      "description": "부위별 목록에서 이름이나 ID로 찾아보세요. 캐시 아이템을 먼저, 같은 그룹에서는 최근 등록 순으로 보여줘요."
+    },
+    {
+      "title": "헤어도 전신으로 비교",
+      "description": "지금 성형과 피부에 헤어를 적용해 비교해요. 목록 미리보기는 장비를 제외하므로 헤어 모양을 보기 쉬워요."
+    },
+    {
+      "title": "표정과 자세까지 내 취향",
+      "description": "웃음과 윙크, 서 있기와 앉기. 현재 코디를 그대로 입은 모습을 미리 보고 선택해요."
+    },
+    {
+      "title": "좋아하는 조합을 오래 간직",
+      "description": "코디는 슬롯에, 완성 이미지는 PNG로 저장해요. 확보한 슬롯에 저장하거나 덮어쓸 때 광고 완료를 요구하지 않아요."
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/mecodi/hair.webp",
+      "alt": "실제 앱의 헤어 전신 미리보기 목록과 캐시 우선 정렬",
+      "caption": "헤어를 전신으로 비교",
+      "width": 640,
+      "height": 797
+    },
+    {
+      "src": "/images/mecodi/skin.webp",
+      "alt": "현재 헤어와 성형을 유지한 실제 피부 선택 목록",
+      "caption": "같은 헤어, 다른 피부",
+      "width": 640,
+      "height": 797
+    },
+    {
+      "src": "/images/mecodi/pose.webp",
+      "alt": "서 있기, 걷기, 엎드리기, 앉기 등 실제 자세 선택 화면",
+      "caption": "입은 코디 그대로 자세 선택",
+      "width": 640,
+      "height": 1093
+    }
+  ],
+  "usage": {
+    "title": "두 칸으로 시작해, 최대 100칸까지.",
+    "body": "기본 슬롯 2칸을 제공합니다. 필요한 만큼 광고 보상을 완료해 2칸씩 늘릴 수 있어요.",
+    "notes": [
+      "광고 보상으로 확장한 슬롯에는 기간 제한이 없습니다.",
+      "기존 유효 PRO 이용권은 광고 제거와 100슬롯 혜택을 유지합니다. 신규 PRO 판매는 하지 않습니다.",
+      "코디와 슬롯은 기기에 저장됩니다. 앱 삭제·기기 변경 시 복구가 보장되지 않으니 필요한 이미지는 따로 보관해 주세요."
+    ]
+  },
+  "faq": [
+    {
+      "question": "지금 스토어에서 2.0을 받을 수 있나요?",
+      "answer": "아직 재출시 준비 중입니다. Google Play 버튼은 기존 공개 버전으로 연결되며, iOS는 스토어 재공개를 준비 중입니다. 공개 버전은 스토어의 버전 정보를 확인해 주세요."
+    },
+    {
+      "question": "아이템을 구매하는 앱인가요?",
+      "answer": "아니요. 코디를 미리 조합해 보는 시뮬레이터입니다. 여기서 고른 아이템이 실제 게임에 지급되지는 않으며, CASH 표시는 아이템 분류입니다."
+    },
+    {
+      "question": "PNG로 저장하려면 광고를 봐야 하나요?",
+      "answer": "기본 PNG 저장에는 광고 시청 완료가 필요하지 않습니다. 일부 작업 완료 뒤 제한적인 전면광고가 표시될 수 있지만 파일 저장은 먼저 처리합니다."
+    },
+    {
+      "question": "기존 PRO 구매 혜택은 어떻게 되나요?",
+      "answer": "새로운 PRO 판매는 종료합니다. 원래 구매한 스토어 계정에서 유효한 구매를 복원하면 광고 제거와 100슬롯을 이용할 수 있습니다. iOS와 Android 구매가 자동으로 통합되지는 않습니다."
+    },
+    {
+      "question": "게임과 완전히 똑같이 보이나요?",
+      "answer": "외부 이미지 서버와 지원 범위에 따라 일부 아이템, 효과, 조합은 게임과 다르게 표시될 수 있습니다. 새 아이템 반영 시점도 게임 업데이트와 같다고 보장하지 않습니다."
+    }
+  ],
+  "requiredDocuments": ["privacy", "terms"],
+  "disclaimer": "메코디는 넥슨의 공식 서비스가 아닌 독립 코디 시뮬레이터입니다. 메이플스토리 관련 이미지와 상표의 권리는 해당 권리자에게 있습니다.",
+  "copy": {
+    "floating": "보고 고르는 나의 코디",
+    "capture": "실제 앱 화면 · Android",
+    "featuresEyebrow": "취향을 찾는 가장 쉬운 방법",
+    "featuresTitle": "고민은 줄이고, 마음껏 입어보세요.",
+    "galleryEyebrow": "직접 보니 더 간단하죠",
+    "galleryTitle": "이렇게 골라보세요.",
+    "usageEyebrow": "내 코디 보관함",
+    "downloadTitle": "다음 코디는, 어떤 모습일까요?"
+  },
+  "storeStatus": {
+    "googlePlay": "available",
+    "appStore": "pending"
+  }
+}

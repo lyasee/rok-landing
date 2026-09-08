@@ -4,10 +4,11 @@ export interface ProductLink {
 
 export interface AppProduct {
   name: string;
+  appSlug?: string;
   icon: string;
   description: string;
   link?: ProductLink;
-  // 내부 소개 페이지 경로(다운로드 링크가 아직 없는 출시 준비 중 앱용).
+  // 공통 앱 레지스트리를 연결하면 새 정보와 내부 소개 페이지를 우선 사용합니다.
   page?: string;
 }
 
@@ -35,11 +36,10 @@ export const appProducts: AppProduct[] = [
   },
   {
     name: "메코디 - 코디 시뮬레이터",
+    appSlug: "mecodi",
     icon: "/images/icon/maple_appicon.png",
     description: "룩덕이라면 필수앱",
-    link: {
-      href: "https://mapleapp.page.link/default",
-    },
+    page: "/mecodi/",
   },
   {
     name: "물타기 - scale trading",

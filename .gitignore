@@ -27,3 +27,8 @@ yarn-error.log*
 
 # local tooling
 .claude/
+
+# Local validation output
+/test-results/
+/playwright-report/
+/evidence/

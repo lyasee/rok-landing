@@ -1,0 +1,77 @@
+---
+import type { AppInfo } from "@/lib/apps";
+interface Props {
+  app: AppInfo;
+}
+const { app } = Astro.props;
+const choices = [
+  { key: "googlePlay" as const, title: "Google Play", platform: "Android" },
+  { key: "appStore" as const, title: "App Store", platform: "iPhone" },
+].filter((item) => app.stores[item.key] || app.storeStatus?.[item.key]);
+---
+
+<div class="store-links">
+  {
+    choices.map((item) => {
+      const available =
+        !!app.stores[item.key] && app.storeStatus?.[item.key] !== "pending";
+      return available ? (
+        <a
+          class={`store-button ${item.key === "appStore" ? "store-button-light" : ""}`}
+          href={app.stores[item.key]}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${app.name} ${item.title} 페이지, 새 창`}
+        >
+          <svg
+            width="24"
+            height="28"
+            viewBox="0 0 24 28"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            {item.key === "googlePlay" ? (
+              <path d="M3 2 22 14 3 26V2Z" fill="currentColor" />
+            ) : (
+              <>
+                <rect x="5" y="1.5" width="14" height="25" rx="3" />
+                <path d="M9 5h6M10 23h4" />
+              </>
+            )}
+          </svg>
+          <>
+            <span>
+              <>
+                <small>{item.platform}</small>
+                <strong>{item.title}</strong>
+              </>
+            </span>
+            <span class="store-arrow" aria-hidden="true">
+              ↗
+            </span>
+          </>
+        </a>
+      ) : (
+        <span
+          class="store-button store-button-light store-pending"
+          aria-label={`${item.title} 공개 준비 중`}
+        >
+          <>
+            <span>
+              <>
+                <small>{item.platform} · 공개 준비 중</small>
+                <strong>{item.title}</strong>
+              </>
+            </span>
+            <span class="store-arrow" aria-hidden="true">
+              —
+            </span>
+          </>
+        </span>
+      );
+    })
+  }
+  {choices.length === 0 && <p class="muted">스토어 공개를 준비 중입니다.</p>}
+</div>

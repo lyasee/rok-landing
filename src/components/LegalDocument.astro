@@ -1,0 +1,125 @@
+---
+import { render } from "astro:content";
+import AppLayout from "@/layouts/AppLayout.astro";
+import {
+  dateLabel,
+  appPath,
+  documentPath,
+  documentLabel,
+  versionPath,
+  type AppInfo,
+  type LegalEntry,
+} from "@/lib/apps";
+interface Props {
+  app: AppInfo;
+  entry: LegalEntry;
+  versions: LegalEntry[];
+  archive?: boolean;
+}
+const { app, entry, versions, archive = false } = Astro.props;
+const { Content, headings } = await render(entry);
+const draft = entry.data.status === "draft";
+---
+
+<AppLayout
+  app={app}
+  title={`${app.name} ${entry.data.title}${archive ? ` · ${entry.data.version}` : ""}`}
+  description={entry.data.summary}
+  noindex={draft || archive}
+>
+  <div class="shell legal-shell">
+    <nav class="breadcrumbs" aria-label="현재 위치">
+      <a href={appPath(app.slug)}>{app.name}</a><span aria-hidden="true">/</span
+      ><span>{entry.data.title}</span>
+    </nav>
+    <header class="legal-header">
+      <p class="eyebrow">{app.name} 이용 안내</p><h1>{entry.data.title}</h1><p>
+        {entry.data.summary}
+      </p><div class="legal-meta">
+        <span>버전 {entry.data.version}</span><span
+          >{
+            draft
+              ? `작성일 ${dateLabel(entry.data.updatedAt)}`
+              : `시행일 ${dateLabel(entry.data.effectiveDate!)}`
+          }</span
+        >
+      </div>
+    </header>
+    {
+      draft && (
+        <aside class="document-notice">
+          <>
+            <strong>공개 전 검토본</strong>
+            <p>
+              운영자의 사실 확인과 시행일 확정 전인 문서입니다. 아직 시행 중인
+              방침·약관으로 안내하지 않습니다.
+            </p>
+          </>
+        </aside>
+      )
+    }
+    {
+      archive && (
+        <aside class="document-notice">
+          <>
+            <strong>버전별 보관 문서</strong>
+            <p>
+              이 주소는 특정 버전을 보관합니다.{" "}
+              <a href={documentPath(app.slug, entry.data.type)}>
+                현재 안내 문서로 이동
+              </a>
+            </p>
+          </>
+        </aside>
+      )
+    }
+    <div class="legal-grid">
+      <aside class="legal-sidebar">
+        <nav aria-label="문서 목차">
+          <h2>이 문서에서</h2><ol>
+            {
+              headings
+                .filter((h) => h.depth === 2)
+                .map((h) => (
+                  <li>
+                    <a href={`#${h.slug}`}>{h.text}</a>
+                  </li>
+                ))
+            }
+          </ol>
+        </nav><a
+          href={documentPath(
+            app.slug,
+            entry.data.type === "privacy" ? "terms" : "privacy",
+          )}
+          >{documentLabel[entry.data.type === "privacy" ? "terms" : "privacy"]} →</a
+        >
+      </aside>
+      <article class="legal-content">
+        <Content /><section
+          class="version-history"
+          aria-labelledby="version-history-title"
+        >
+          <h2 id="version-history-title">문서 이력</h2><ul>
+            {
+              versions.map((v) => (
+                <li>
+                  <>
+                    <a href={versionPath(v)}>{v.data.version}</a>
+                    <span>
+                      {v.data.status === "draft"
+                        ? "검토본"
+                        : v.data.current
+                          ? "현재 버전"
+                          : "이전 버전"}
+                    </span>
+                  </>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+      </article>
+    </div>
+  </div>
+</AppLayout>

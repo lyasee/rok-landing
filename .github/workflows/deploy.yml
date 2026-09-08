@@ -33,6 +33,12 @@ jobs:
       - name: Check formatting
         run: npm run format:check
 
+      - name: Validate content and tests
+        run: npm run content:check && npm test
+
+      - name: Verify publication approval
+        run: npm run release:check
+
       - name: Build
         run: npm run build
 

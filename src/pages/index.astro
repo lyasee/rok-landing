@@ -1,5 +1,26 @@
 ---
-import { appProducts, webProducts } from "@/data/products";
+import { appProducts, webProducts, type AppProduct } from "@/data/products";
+import { getApps, appPath } from "@/lib/apps";
+const registered = await getApps();
+const registeredCard = (app: (typeof registered)[number]): AppProduct => ({
+  appSlug: app.data.slug,
+  name: app.data.listingName,
+  icon: app.data.icon,
+  description: app.data.tagline,
+  page: appPath(app.data.slug),
+});
+const products: AppProduct[] = appProducts.map((product) => {
+  const app = registered.find((entry) => entry.data.slug === product.appSlug);
+  return app ? registeredCard(app) : product;
+});
+products.push(
+  ...registered
+    .filter(
+      (app) =>
+        !appProducts.some((product) => product.appSlug === app.data.slug),
+    )
+    .map(registeredCard),
+);
 import "@/styles/global.css";
 
 const title = "알오케이지지";
@@ -8,7 +29,7 @@ const keywords = "알오케이지지,메코디,김프,kimp,물타기";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -24,6 +45,7 @@ const keywords = "알오케이지지,메코디,김프,kimp,물타기";
     <meta property="og:url" content="https://rok.gg" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="manifest" href="/manifest.json" />
+    <link rel="canonical" href="https://rok.gg/" />
     <title>{title}</title>
   </head>
   <body>
@@ -37,7 +59,7 @@ const keywords = "알오케이지지,메코디,김프,kimp,물타기";
           <h1 id="apps-title">Apps</h1>
           <div class="item-list">
             {
-              appProducts.slice(0, 2).map((product) => (
+              products.slice(0, 2).map((product) => (
                 <div class="item-wrapper">
                   <article class="item">
                     <img
@@ -77,7 +99,7 @@ const keywords = "알오케이지지,메코디,김프,kimp,물타기";
           </div>
           <div class="item-list">
             {
-              appProducts.slice(2).map((product) => (
+              products.slice(2).map((product) => (
                 <div class="item-wrapper">
                   <article class="item">
                     <img
@@ -156,9 +178,8 @@ const keywords = "알오케이지지,메코디,김프,kimp,물타기";
 
       <footer class="footer">
         <div>
-          <p>
-            <a href="mailto:notice.rokgg@gmail.com">Contact Us</a>
-          </p>
+          <p><a href="mailto:notice.rokgg@gmail.com">Contact Us</a></p>
+          <p><a href="/legal/">앱별 개인정보처리방침 · 이용약관</a></p>
         </div>
       </footer>
     </div>

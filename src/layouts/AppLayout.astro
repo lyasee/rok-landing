@@ -1,0 +1,107 @@
+---
+import { SITE, appPath, documentPath, type AppInfo } from "@/lib/apps";
+import "@/styles/apps.css";
+interface Props {
+  app?: AppInfo;
+  title: string;
+  description: string;
+  noindex?: boolean;
+  canonical?: string;
+}
+const {
+  app,
+  title,
+  description,
+  noindex = false,
+  canonical = Astro.url.pathname,
+} = Astro.props;
+const url = new URL(canonical, SITE.url).href;
+const icon = app?.icon ?? "/logo512.png";
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" /><meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <title>{title}</title><meta name="description" content={description} /><meta
+      name="theme-color"
+      content={app?.accent ?? "#c44708"}
+    />
+    <meta
+      name="robots"
+      content={noindex ? "noindex,follow" : "index,follow"}
+    /><link rel="canonical" href={url} />
+    <meta property="og:title" content={title} /><meta
+      property="og:description"
+      content={description}
+    /><meta property="og:type" content="website" /><meta
+      property="og:locale"
+      content="ko_KR"
+    />
+    <meta property="og:url" content={url} /><meta
+      property="og:image"
+      content={new URL(icon, SITE.url).href}
+    /><meta
+      property="og:image:alt"
+      content={`${app?.name ?? SITE.name} 앱 아이콘`}
+    />
+    <meta name="twitter:card" content="summary" /><link
+      rel="icon"
+      href={icon}
+    /><meta name="referrer" content="strict-origin-when-cross-origin" />
+  </head>
+  <body style={`--accent:${app?.accent ?? "#c44708"}`}>
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a href={app ? appPath(app.slug) : "/"} class="brand"
+          >{app && <img src={app.icon} width="40" height="40" alt="" />}<span
+            >{app?.name ?? SITE.name}</span
+          ></a
+        >
+        <nav aria-label="주 메뉴">
+          <a href="/">모든 앱</a>{
+            app && <a href={`${appPath(app.slug)}#features`}>기능</a>
+          }<a href="/legal/">이용 안내</a>{
+            app && (
+              <a class="nav-cta" href={`${appPath(app.slug)}#download`}>
+                다운로드
+              </a>
+            )
+          }
+        </nav>
+      </div>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div>
+          <a href="/" class="footer-brand">ROKGG<span>알오케이지지</span></a><p>
+            매일의 작은 즐거움을 만드는 앱.
+          </p><a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        </div>
+        <nav aria-label="하단 메뉴">
+          <a href="/">전체 서비스</a>{
+            app && (
+              <>
+                <>
+                  <a href={documentPath(app.slug, "privacy")}>
+                    개인정보처리방침
+                  </a>
+                  <a href={documentPath(app.slug, "terms")}>서비스 이용약관</a>
+                </>
+              </>
+            )
+          }<a href="/legal/">앱별 이용 안내</a>
+        </nav>
+      </div><div class="shell footer-bottom">
+        {app && <p>{app.disclaimer}</p>}<p>
+          © {new Date().getFullYear()} ROKGG.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

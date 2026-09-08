@@ -1,0 +1,66 @@
+[
+  {
+    "name": "home",
+    "source": "ADS-002-20260907-205137/qa-home.png",
+    "sourceSHA256": "91cbafa734dcb1c0f1f05aa104a962655d45c5cef87509910cc193ad42dd9e88",
+    "cropPixels": {
+      "left": 0,
+      "top": 112,
+      "width": 1080,
+      "height": 2186
+    },
+    "output": "/images/mecodi/home.webp",
+    "width": 720,
+    "height": 1457,
+    "bytes": 47850,
+    "sha256": "f5934b8fd6f947a04d667f1826b0b06e40f3dda1b78f9981c339bbe8ac93c90f"
+  },
+  {
+    "name": "hair",
+    "source": "DESIGN-003-20260907-095134/device-hair-list.png",
+    "sourceSHA256": "6d08ed8a128c4e8a9f3cb9a19dbda758c4b3c671ad53b658011d8a8f2193a6ee",
+    "cropPixels": {
+      "left": 0,
+      "top": 761,
+      "width": 1080,
+      "height": 1345
+    },
+    "output": "/images/mecodi/hair.webp",
+    "width": 640,
+    "height": 797,
+    "bytes": 49850,
+    "sha256": "891632780b289761b02cb9b9083c74ede1c7bf199582cef1225efba953a557b5"
+  },
+  {
+    "name": "skin",
+    "source": "DESIGN-003-20260907-095134/device-skins-final.png",
+    "sourceSHA256": "f0e99cae476c2075fcdd06d1f1228895cf8d2e434c5eae8199d5a693b2005ff8",
+    "cropPixels": {
+      "left": 0,
+      "top": 761,
+      "width": 1080,
+      "height": 1345
+    },
+    "output": "/images/mecodi/skin.webp",
+    "width": 640,
+    "height": 797,
+    "bytes": 42998,
+    "sha256": "61c81feee8f14c722292eec4c2c3487c0680c92f34d7a57d6a520d916dd3ecfd"
+  },
+  {
+    "name": "pose",
+    "source": "DESIGN-003-20260907-095134/device-poses.png",
+    "sourceSHA256": "546fb44c39d479f89eb20be6d8eca4431e3fa69f19ea2a5b761cd583f0f92e67",
+    "cropPixels": {
+      "left": 0,
+      "top": 440,
+      "width": 1080,
+      "height": 1844
+    },
+    "output": "/images/mecodi/pose.webp",
+    "width": 640,
+    "height": 1093,
+    "bytes": 51520,
+    "sha256": "6be4f5fd8633d0736202348d3631250f83adb49c7143a566f296e1a9a00f8eb6"
+  }
+]

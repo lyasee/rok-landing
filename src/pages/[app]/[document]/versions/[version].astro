@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import LegalDocument from "@/components/LegalDocument.astro";
+import {
+  getApps,
+  getLegalVersions,
+  type AppInfo,
+  type LegalEntry,
+} from "@/lib/apps";
+export async function getStaticPaths() {
+  const apps = await getApps(),
+    documents = await getCollection("legal");
+  return documents.flatMap((entry) => {
+    const app = apps.find((a) => a.data.slug === entry.data.app)?.data;
+    return app
+      ? [
+          {
+            params: {
+              app: app.slug,
+              document: entry.data.type,
+              version: entry.data.version,
+            },
+            props: { app, entry },
+          },
+        ]
+      : [];
+  });
+}
+interface Props {
+  app: AppInfo;
+  entry: LegalEntry;
+}
+const { app, entry } = Astro.props;
+const versions = await getLegalVersions(app.slug, entry.data.type);
+---
+
+<LegalDocument app={app} entry={entry} versions={versions} archive />

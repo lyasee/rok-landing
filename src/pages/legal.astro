@@ -1,0 +1,64 @@
+---
+import AppLayout from "@/layouts/AppLayout.astro";
+import {
+  getApps,
+  getCurrentDocuments,
+  documentPath,
+  documentLabel,
+  appPath,
+} from "@/lib/apps";
+const entries = await Promise.all(
+  (await getApps()).map(async (entry) => ({
+    app: entry.data,
+    documents: await getCurrentDocuments(entry.data.slug),
+  })),
+);
+---
+
+<AppLayout
+  title="앱별 개인정보처리방침·이용약관 | 알오케이지지"
+  description="알오케이지지 앱의 서비스 소개, 개인정보처리방침과 서비스 이용약관을 모아 안내합니다."
+>
+  <section class="shell document-index">
+    <p class="eyebrow">서비스별 안내</p><h1>
+      앱마다 필요한 정보를<br />한곳에서 확인하세요.
+    </h1><p class="muted">
+      문서는 서비스별로 관리합니다. 검토본 표시는 아직 시행되지 않은 문서입니다.
+    </p>
+    <div class="document-cards">
+      {
+        entries.map(({ app, documents }) => (
+          <article class="document-card">
+            <>
+              <h2>
+                <a href={appPath(app.slug)}>{app.name}</a>
+              </h2>
+              <nav aria-label={`${app.name} 이용 안내`}>
+                <a href={appPath(app.slug)}>
+                  서비스 소개<span aria-hidden="true">↗</span>
+                </a>
+                {documents.map((entry) => (
+                  <a href={documentPath(app.slug, entry.data.type)}>
+                    {documentLabel[entry.data.type]}
+                    <small>
+                      {entry.data.status === "draft"
+                        ? "공개 전 검토본"
+                        : "현재 문서"}
+                    </small>
+                  </a>
+                ))}
+              </nav>
+            </>
+          </article>
+        ))
+      }
+      <article class="document-card">
+        <h2>위고</h2><nav aria-label="위고 이용 안내">
+          <a href="/wego">서비스 소개<span aria-hidden="true">↗</span></a><a
+            href="/wego/privacy">개인정보처리방침<small>기존 문서</small></a
+          >
+        </nav>
+      </article>
+    </div>
+  </section>
+</AppLayout>
