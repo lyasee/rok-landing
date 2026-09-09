@@ -1,0 +1,29 @@
+{
+  "id": "/",
+  "name": "ROK.GG — 취향대로 골라 쓰세요.",
+  "short_name": "ROK.GG",
+  "description": "꾸미는 재미부터 기록하는 즐거움까지. ROK.GG가 만든 앱들을 만나보세요.",
+  "lang": "ko",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "theme_color": "#f5f5fb",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/images/home/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/home/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/images/home/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ]
+}

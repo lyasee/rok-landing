@@ -1,0 +1,80 @@
+---
+import type { AppInfo } from "@/lib/apps";
+import { appPath } from "@/lib/apps";
+import HomeAppArtwork from "./HomeAppArtwork.astro";
+interface Props {
+  app: AppInfo;
+  index: number;
+}
+const { app, index } = Astro.props;
+const home = app.home;
+const themes = ["peach", "blue", "mint", "lemon", "pink"] as const;
+const theme = home?.theme ?? themes[index % themes.length];
+const headline = home?.headline ?? app.tagline;
+---
+
+<article
+  class:list={["app-card", `app-card--${theme}`]}
+  data-reveal
+  data-animated
+  data-app={app.slug}
+>
+  <a
+    class="app-card__link"
+    href={appPath(app.slug)}
+    aria-label={`${app.name} 살펴보기`}
+    data-parallax
+  >
+    <div class="app-card__copy">
+      <div class="app-card__identity">
+        <img
+          class="app-card__icon"
+          src={app.icon}
+          alt=""
+          width="56"
+          height="56"
+          loading={index === 0 ? "eager" : "lazy"}
+        />
+        <span class="app-card__category"
+          >{app.name}{
+            home?.category && (
+              <>
+                {" "}
+                <span aria-hidden="true">/</span> {home.category}
+              </>
+            )
+          }</span
+        >
+      </div>
+      <h3 class="app-card__name" lang={home?.englishName ? "en" : "ko"}>
+        {home?.englishName ?? app.name}<span
+          class="app-card__name-dot"
+          aria-hidden="true">.</span
+        >
+      </h3>
+      <p class="app-card__headline">{headline}</p>
+      <p class="app-card__description">{home?.description ?? app.hero.body}</p>
+      <div class="app-card__action">
+        <span class="pill-link"
+          >앱 살펴보기 <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg
+          ></span
+        >
+        <span class="app-card__status">{app.releaseLabel}</span>
+      </div>
+      {
+        home?.tags?.length ? (
+          <div class="app-card__tags">
+            {home.tags.map((tag) => (
+              <span>{tag}</span>
+            ))}
+          </div>
+        ) : null
+      }
+    </div>
+    <HomeAppArtwork app={app} index={index} />
+  </a>
+</article>

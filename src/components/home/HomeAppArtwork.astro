@@ -1,0 +1,130 @@
+---
+import type { AppInfo } from "@/lib/apps";
+interface Props {
+  app: AppInfo;
+  index: number;
+}
+const { app, index } = Astro.props;
+const loading = index === 0 ? "eager" : "lazy";
+---
+
+<div class:list={["app-artwork", `app-artwork--${app.slug}`]}>
+  <div class="artwork-plane" data-parallax-plane>
+    {
+      app.slug === "mecodi" ? (
+        <>
+          <span class="art-orbit art-orbit--peach" aria-hidden="true" />
+          <div class="mecodi-look float-piece" aria-hidden="true">
+            <span class="mecodi-look__label">MY FAVORITE LOOK</span>
+            <div class="mecodi-character">
+              <img
+                src="/images/mecodi/home.webp"
+                width="720"
+                height="1457"
+                alt=""
+                loading={loading}
+              />
+            </div>
+            <span class="mecodi-look__caption">오늘은, 이 코디!</span>
+            <svg
+              class="mecodi-look__heart"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+            >
+              <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z" />
+            </svg>
+          </div>
+          <div class="mecodi-screen float-piece">
+            <img
+              src={app.hero.image}
+              alt={app.hero.imageAlt}
+              width={app.hero.width}
+              height={app.hero.height}
+              loading={loading}
+            />
+          </div>
+          <span
+            class="art-sticker art-sticker--mecodi float-piece"
+            aria-hidden="true"
+          >
+            <svg viewBox="0 0 24 24" width="17" height="17">
+              <path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z" />
+            </svg>{" "}
+            취향 발견!
+          </span>
+          <span class="art-spark art-spark--one float-piece" aria-hidden="true">
+            ✳
+          </span>
+          <span class="art-spark art-spark--two" aria-hidden="true">
+            ✧
+          </span>
+          <span class="art-note art-note--mecodi" aria-hidden="true">
+            Your style,
+            <br />
+            your character.
+          </span>
+          <span class="art-caption">실제 앱 화면 · 메코디 2.0 미리보기</span>
+        </>
+      ) : app.slug === "movecut" ? (
+        <>
+          <span class="art-orbit art-orbit--blue" aria-hidden="true" />
+          <div class="movecut-print movecut-print--back float-piece">
+            <img
+              src="/images/movecut/card-finish.webp"
+              alt="무브컷 앱으로 만든 첫 5km 완주 기념 카드 예시"
+              width="800"
+              height="1000"
+              loading="lazy"
+            />
+          </div>
+          <div class="movecut-print movecut-print--front float-piece">
+            <img
+              src={app.hero.image}
+              alt={app.hero.imageAlt}
+              width={app.hero.width}
+              height={app.hero.height}
+              loading="lazy"
+            />
+          </div>
+          <span
+            class="art-sticker art-sticker--movecut float-piece"
+            aria-hidden="true"
+          >
+            <svg width="17" height="17" viewBox="0 0 24 24">
+              <path d="m4 13 5 5L20 6" />
+            </svg>{" "}
+            오늘도, 나의 페이스로.
+          </span>
+          <svg class="art-doodle" viewBox="0 0 100 90" aria-hidden="true">
+            <path d="M8 78c1-26 13-56 37-48 17 6 12 26-2 23C25 50 46 8 86 15m-10-9 12 10-13 8" />
+          </svg>
+          <span class="art-note art-note--movecut" aria-hidden="true">
+            Move.
+            <br />
+            Record.
+            <br />
+            Keep.
+          </span>
+          <span class="art-caption">실제 앱에서 만든 운동 카드 예시</span>
+        </>
+      ) : (
+        <>
+          <span class="art-orbit" aria-hidden="true" />
+          <div class="generic-screen float-piece">
+            <img
+              src={app.hero.image}
+              alt={app.hero.imageAlt}
+              width={app.hero.width}
+              height={app.hero.height}
+              loading={loading}
+            />
+          </div>
+          <span class="art-spark art-spark--one float-piece" aria-hidden="true">
+            ✳
+          </span>
+        </>
+      )
+    }
+  </div>
+</div>

@@ -111,5 +111,13 @@
   "storeStatus": {
     "googlePlay": "available",
     "appStore": "pending"
+  },
+  "home": {
+    "theme": "peach",
+    "englishName": "Mecodi",
+    "category": "코디 시뮬레이터",
+    "headline": "내 캐릭터, 내 취향대로.",
+    "description": "헤어 하나, 아이템 하나 바꿔가며\n마음에 쏙 드는 코디를 찾아보세요.",
+    "tags": ["미리 입어보기", "코디 저장", "PNG 내보내기"]
   }
 }

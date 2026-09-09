@@ -26,6 +26,16 @@ const apps = defineCollection({
     order: z.number().int().nonnegative(),
     accent: z.string().regex(/^#[0-9a-fA-F]{6}$/),
     icon: localAsset,
+    home: z
+      .object({
+        theme: z.enum(["peach", "blue", "mint", "lemon", "pink"]).optional(),
+        englishName: z.string().min(1).max(40).optional(),
+        category: z.string().min(1).max(40).optional(),
+        headline: z.string().min(1).max(80).optional(),
+        description: z.string().min(1).max(200).optional(),
+        tags: z.array(z.string().min(1).max(24)).max(3).optional(),
+      })
+      .optional(),
     launchStatus: z.enum(["preview", "available", "coming-soon"]),
     releaseLabel: z.string(),
     releaseNote: z.string(),

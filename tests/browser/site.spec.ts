@@ -30,7 +30,9 @@ test("homepage points to Mecodi landing instead of its old dynamic link", async 
   await page.goto("/");
   await expect(page.locator('a[href="/mecodi/"]')).toBeVisible();
   await expect(page.locator('a[href*="mapleapp.page.link"]')).toHaveCount(0);
-  await expect(page.locator('a[href="/wego"]')).toBeVisible();
+  await expect(page.locator('a[href="/wego"], a[href="/wego/"]')).toHaveCount(
+    0,
+  );
 });
 test("both platform download destinations and current policy are explicit", async ({
   page,

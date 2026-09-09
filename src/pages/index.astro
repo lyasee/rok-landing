@@ -1,31 +1,12 @@
 ---
-import { appProducts, webProducts, type AppProduct } from "@/data/products";
-import { getApps, appPath } from "@/lib/apps";
-const registered = await getApps();
-const registeredCard = (app: (typeof registered)[number]): AppProduct => ({
-  appSlug: app.data.slug,
-  name: app.data.listingName,
-  icon: app.data.icon,
-  description: app.data.tagline,
-  page: appPath(app.data.slug),
-});
-const products: AppProduct[] = appProducts.map((product) => {
-  const app = registered.find((entry) => entry.data.slug === product.appSlug);
-  return app ? registeredCard(app) : product;
-});
-products.push(
-  ...registered
-    .filter(
-      (app) =>
-        !appProducts.some((product) => product.appSlug === app.data.slug),
-    )
-    .map(registeredCard),
-);
-import "@/styles/global.css";
-
-const title = "알오케이지지";
-const description = "웹, 앱 개발 전문 알오케이지지";
-const keywords = "알오케이지지,메코디,김프,kimp,물타기";
+import HomeAppCard from "@/components/home/HomeAppCard.astro";
+import { getApps, SITE } from "@/lib/apps";
+import "@/styles/home.css";
+const apps = await getApps();
+const title = "ROK.GG — 취향대로 골라 쓰세요.";
+const description =
+  "꾸미는 재미부터 기록하는 즐거움까지. 메코디, 무브컷 그리고 ROK.GG가 만드는 새로운 앱들을 만나보세요.";
+const year = new Date().getFullYear();
 ---
 
 <!doctype html>
@@ -33,155 +14,174 @@ const keywords = "알오케이지지,메코디,김프,kimp,물타기";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="title" content={title} />
-    <meta name="keywords" content={keywords} />
-    <meta name="publisher" content={title} />
-    <meta name="author" content={title} />
+    <meta name="theme-color" content="#f5f5fb" />
     <meta name="description" content={description} />
+    <meta name="author" content={SITE.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://rok.gg" />
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="canonical" href="https://rok.gg/" />
+    <meta property="og:url" content={`${SITE.url}/`} />
+    <meta property="og:site_name" content="ROK.GG" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:image" content={`${SITE.url}/images/home/social.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="ROK.GG — 취향대로 골라 쓰세요. 메코디와 무브컷을 소개하는 컬러풀한 앱 컬렉션"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/images/home/favicon.svg" />
+    <link rel="apple-touch-icon" href="/images/home/icon-192.png" />
+    <link rel="manifest" href="/home.webmanifest" />
+    <link rel="canonical" href={`${SITE.url}/`} />
     <title>{title}</title>
   </head>
-  <body>
-    <div class="page">
-      <header class="header">
-        <h4>알오케이지지</h4>
+  <body class="home-page">
+    <a class="skip-link" href="#main">본문으로 바로가기</a>
+    <div class="site-frame">
+      <header class="home-header">
+        <a class="wordmark" href="/" aria-label="ROK.GG 홈"
+          >ROK.GG<span class="brand-dot" aria-hidden="true"></span></a
+        >
+        <nav class="home-nav" aria-label="메인 메뉴">
+          <a href="#apps">앱 보기</a>
+          <a class="nav-contact" href={`mailto:${SITE.email}`}
+            >문의하기 <span aria-hidden="true">↗</span></a
+          >
+        </nav>
       </header>
-
-      <main class="container">
-        <section class="list-box" aria-labelledby="apps-title">
-          <h1 id="apps-title">Apps</h1>
-          <div class="item-list">
-            {
-              products.slice(0, 2).map((product) => (
-                <div class="item-wrapper">
-                  <article class="item">
-                    <img
-                      class="app-icon"
-                      src={product.icon}
-                      alt={`${product.name} 아이콘`}
-                      loading="lazy"
-                      width="100"
-                      height="100"
-                    />
-                    <div class="text-container">
-                      <h3>{product.name}</h3>
-                      <p>{product.description}</p>
-                      <div class="button-wrapper">
-                        {product.link ? (
-                          <a
-                            class="button"
-                            href={product.link.href}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            다운로드
-                          </a>
-                        ) : product.page ? (
-                          <a class="button" href={product.page}>
-                            자세히
-                          </a>
-                        ) : (
-                          <span class="button">SOON</span>
-                        )}
-                      </div>
-                    </div>
-                  </article>
-                </div>
-              ))
-            }
+      <main id="main">
+        <section class="home-hero" aria-labelledby="hero-title" data-animated>
+          <div class="hero-copy">
+            <p class="hero-eyebrow" data-intro>
+              <span aria-hidden="true">✳</span> SMALL APPS, BIG JOY
+            </p>
+            <h1 id="hero-title" data-intro>
+              취향대로<br /><span class="hero-title-last"
+                >골라 쓰세요.<svg
+                  class="hero-underline"
+                  viewBox="0 0 450 22"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                  ><path d="M5 12C102 2 310 1 444 9M47 18c110-9 222-9 333-5"
+                  ></path></svg
+                ></span
+              >
+            </h1>
+            <p class="hero-description" data-intro>
+              꾸미는 재미부터, 기록하는 즐거움까지.<br />일상에 더하고 싶은 앱을
+              만나보세요.
+            </p>
+            <a class="hero-link" href="#apps" data-intro
+              >어떤 앱이 있나요? <svg
+                viewBox="0 0 24 24"
+                width="19"
+                height="19"
+                aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6"></path></svg
+              ></a
+            >
           </div>
-          <div class="item-list">
-            {
-              products.slice(2).map((product) => (
-                <div class="item-wrapper">
-                  <article class="item">
-                    <img
-                      class="app-icon"
-                      src={product.icon}
-                      alt={`${product.name} 아이콘`}
-                      loading="lazy"
-                      width="100"
-                      height="100"
-                    />
-                    <div class="text-container">
-                      <h3>{product.name}</h3>
-                      <p>{product.description}</p>
-                      <div class="button-wrapper">
-                        {product.link ? (
-                          <a
-                            class="button"
-                            href={product.link.href}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            다운로드
-                          </a>
-                        ) : product.page ? (
-                          <a class="button" href={product.page}>
-                            자세히
-                          </a>
-                        ) : (
-                          <span class="button">SOON</span>
-                        )}
-                      </div>
-                    </div>
-                  </article>
-                </div>
-              ))
-            }
-            <div class="item-wrapper"></div>
+          <div class="hero-playground" aria-hidden="true">
+            <span class="hero-shape hero-shape--blue float-piece"></span>
+            <span class="hero-shape hero-shape--yellow float-piece"></span>
+            <span class="hero-shape hero-shape--pink float-piece"></span>
+            <span class="hero-shape hero-shape--mint float-piece"></span>
+            <span class="hero-small-star float-piece">✦</span>
+            <div class="hero-handwriting">
+              Small apps.<br /><span>Big joy!</span><svg viewBox="0 0 205 27"
+                ><path d="M7 19c47-13 127-20 188-8M30 24c47-10 101-13 139-10"
+                ></path></svg
+              >
+            </div>
+            <span class="hero-orbit-label">A LITTLE MORE YOU.</span>
+            <svg class="hero-loop" viewBox="0 0 90 75"
+              ><path
+                d="M5 10c7 53 53 61 63 34C78 12 20 8 29 39c6 21 35 29 50 24m-7-8 10 8-9 8"
+              ></path></svg
+            >
           </div>
         </section>
-
-        <section class="list-box" aria-labelledby="webs-title">
-          <h1 id="webs-title">Webs</h1>
-          <div class="item-list">
+        <section id="apps" class="app-collection" aria-labelledby="apps-title">
+          <div class="section-heading" data-reveal>
+            <div class="section-heading__title">
+              <h2 id="apps-title">지금 만나볼 앱</h2><span
+                class="app-count"
+                aria-label={`${apps.length}개 앱`}
+                >{String(apps.length).padStart(2, "0")}</span
+              >
+            </div>
+            <span class="section-heading__aside" lang="en"
+              >MADE TO MAKE YOUR DAY.</span
+            >
+          </div>
+          <div class="app-collection__cards">
             {
-              webProducts.map((product) => (
-                <div class="item-wrapper">
-                  <article class="item">
-                    <div class="web-icon" aria-hidden="true">
-                      <span>R</span>
-                    </div>
-                    <div class="text-container">
-                      <h3>{product.name}</h3>
-                      <p>{product.description}</p>
-                      <div class="button-wrapper">
-                        {product.url ? (
-                          <a
-                            class="button"
-                            href={product.url}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            바로가기
-                          </a>
-                        ) : (
-                          <span class="button">{product.status ?? "SOON"}</span>
-                        )}
-                      </div>
-                    </div>
-                  </article>
-                </div>
+              apps.map((entry, index) => (
+                <HomeAppCard app={entry.data} index={index} />
               ))
             }
           </div>
+        </section>
+        <section
+          class="next-apps"
+          aria-labelledby="next-title"
+          data-reveal
+          data-animated
+        >
+          <div class="next-apps__copy">
+            <p class="next-apps__eyebrow">
+              <span class="next-dot" aria-hidden="true"></span> NEXT LITTLE JOY
+            </p>
+            <h2 id="next-title">다음 즐거움도,<br />만들고 있어요.</h2>
+            <p>새로운 앱은 이곳에서 가장 먼저 소개할게요.</p>
+          </div>
+          <div class="next-apps__art" aria-hidden="true">
+            <span class="next-shape next-shape--yellow float-piece"></span><span
+              class="next-shape next-shape--mint float-piece"></span><span
+              class="next-shape next-shape--pink float-piece">✳</span
+            ><span class="next-art-note"
+              >Good things<br />take a little time.</span
+            >
+          </div>
+          <a
+            class="next-apps__link"
+            href={`mailto:${SITE.email}?subject=${encodeURIComponent("ROK.GG에 전하고 싶은 아이디어")}`}
+            >만나고 싶은 앱이 있나요? <span
+              class="next-apps__arrow"
+              aria-hidden="true">↗</span
+            ></a
+          >
         </section>
       </main>
-
-      <footer class="footer">
-        <div>
-          <p><a href="mailto:notice.rokgg@gmail.com">Contact Us</a></p>
-          <p><a href="/legal/">앱별 개인정보처리방침 · 이용약관</a></p>
+      <footer class="home-footer">
+        <div class="footer-main">
+          <div>
+            <a class="wordmark wordmark--footer" href="/" aria-label="ROK.GG 홈"
+              >ROK.GG<span class="brand-dot" aria-hidden="true"></span></a
+            ><p class="footer-tagline">오늘에 조금 더, 즐거움을.</p>
+          </div><nav class="footer-nav" aria-label="사이트 안내">
+            <a href={`mailto:${SITE.email}`}>문의</a><a href="/legal/"
+              >앱별 개인정보처리방침 · 이용약관</a
+            >
+          </nav>
+        </div>
+        <div class="footer-bottom">
+          <small>© {year} ROK.GG. All rights reserved.</small><button
+            class="motion-toggle"
+            type="button"
+            data-motion-toggle
+            aria-pressed="false"
+            hidden
+            ><span class="motion-toggle__icon" aria-hidden="true"
+              ><i></i><i></i><i></i></span
+            ><span data-motion-label>움직임 끄기</span></button
+          >
         </div>
       </footer>
     </div>
+    <script>
+      import "@/scripts/home-motion";
+    </script>
   </body>
 </html>

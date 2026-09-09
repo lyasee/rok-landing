@@ -115,5 +115,13 @@
   "storeStatus": {
     "googlePlay": "pending",
     "appStore": "pending"
+  },
+  "home": {
+    "theme": "blue",
+    "englishName": "MoveCut",
+    "category": "운동 기록 카드",
+    "headline": "운동한 오늘을 한 장으로.",
+    "description": "사진에 기록과 기분을 더해보세요.\n남기고 싶은 나만의 운동 카드가 돼요.",
+    "tags": ["사진 + 운동 기록", "33가지 프레임", "저장 · 공유"]
   }
 }
