@@ -1,0 +1,39 @@
+{
+  "slug": "movecut",
+  "name": "무브컷",
+  "listingName": "무브컷 · MoveCut",
+  "tagline": "운동한 오늘을, 남기고 싶은 한 장으로.",
+  "description": "사진과 운동 기록을 기기에 보관하고, 나만의 카드로 남기는 무브컷입니다.",
+  "visible": false,
+  "order": 30,
+  "accent": "#c7e548",
+  "icon": "/images/app-placeholder.svg",
+  "launchStatus": "coming-soon",
+  "releaseLabel": "출시 준비 중",
+  "releaseNote": "무브컷 앱의 개인정보처리방침과 서비스 이용약관을 안내합니다.",
+  "hero": {
+    "line1": "운동한 오늘을,",
+    "line2": "한 장으로 남겨요.",
+    "body": "사진과 운동 기록을 기기에 보관하고, 나만의 카드로 남겨보세요.",
+    "image": "/images/app-placeholder.svg",
+    "imageAlt": "무브컷 앱 안내",
+    "width": 400,
+    "height": 400
+  },
+  "stores": {},
+  "features": [
+    {
+      "title": "사진으로 카드 만들기",
+      "description": "앨범 사진이나 카메라로 촬영한 사진을 카드에 담을 수 있습니다."
+    }
+  ],
+  "screenshots": [],
+  "faq": [],
+  "usage": {
+    "title": "기기에 기록하기",
+    "body": "무브컷의 기록과 결과물은 이용자의 기기에 저장됩니다.",
+    "notes": []
+  },
+  "requiredDocuments": ["privacy", "terms"],
+  "disclaimer": "무브컷은 알오케이지지가 제공하는 독립 앱입니다."
+}

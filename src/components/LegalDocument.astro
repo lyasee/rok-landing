@@ -29,8 +29,9 @@ const draft = entry.data.status === "draft";
 >
   <div class="shell legal-shell">
     <nav class="breadcrumbs" aria-label="현재 위치">
-      <a href={appPath(app.slug)}>{app.name}</a><span aria-hidden="true">/</span
-      ><span>{entry.data.title}</span>
+      <a href={app.visible ? appPath(app.slug) : "/"}
+        >{app.visible ? app.name : "알오케이지지"}</a
+      ><span aria-hidden="true">/</span><span>{entry.data.title}</span>
     </nav>
     <header class="legal-header">
       <p class="eyebrow">{app.name} 이용 안내</p><h1>{entry.data.title}</h1><p>

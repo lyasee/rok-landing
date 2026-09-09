@@ -1,9 +1,9 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
-import { SITE, getApps, appPath, documentPath } from "@/lib/apps";
+import { SITE, getAllApps, getApps, appPath, documentPath } from "@/lib/apps";
 export const GET: APIRoute = async () => {
   const apps = await getApps();
-  const slugs = new Set(apps.map((a) => a.data.slug));
+  const slugs = new Set((await getAllApps()).map((a) => a.data.slug));
   const docs = await getCollection(
     "legal",
     ({ data }) =>

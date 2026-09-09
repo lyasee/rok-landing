@@ -17,6 +17,7 @@ const {
 } = Astro.props;
 const url = new URL(canonical, SITE.url).href;
 const icon = app?.icon ?? "/logo512.png";
+const isPublicApp = app?.visible === true;
 ---
 
 <!doctype html>
@@ -57,16 +58,16 @@ const icon = app?.icon ?? "/logo512.png";
     <a class="skip-link" href="#main">본문으로 건너뛰기</a>
     <header class="site-header">
       <div class="shell header-inner">
-        <a href={app ? appPath(app.slug) : "/"} class="brand"
+        <a href={isPublicApp ? appPath(app!.slug) : "/"} class="brand"
           >{app && <img src={app.icon} width="40" height="40" alt="" />}<span
             >{app?.name ?? SITE.name}</span
           ></a
         >
         <nav aria-label="주 메뉴">
           <a href="/">모든 앱</a>{
-            app && <a href={`${appPath(app.slug)}#features`}>기능</a>
+            isPublicApp && <a href={`${appPath(app!.slug)}#features`}>기능</a>
           }<a href="/legal/">이용 안내</a>{
-            app && (
+            isPublicApp && (
               <a class="nav-cta" href={`${appPath(app.slug)}#download`}>
                 다운로드
               </a>

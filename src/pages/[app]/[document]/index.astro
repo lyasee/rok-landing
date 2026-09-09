@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import LegalDocument from "@/components/LegalDocument.astro";
 import {
-  getApps,
+  getAllApps,
   getLegalVersions,
   validateRegistry,
   type AppInfo,
@@ -10,7 +10,7 @@ import {
 } from "@/lib/apps";
 export async function getStaticPaths() {
   await validateRegistry();
-  const apps = await getApps(),
+  const apps = await getAllApps(),
     docs = await getCollection("legal", ({ data }) => data.current);
   return docs.flatMap((entry) => {
     const app = apps.find((a) => a.data.slug === entry.data.app)?.data;

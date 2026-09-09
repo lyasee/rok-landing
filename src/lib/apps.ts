@@ -17,12 +17,18 @@ export const versionPath = (entry: LegalEntry) =>
   `/${entry.data.app}/${entry.data.type}/versions/${entry.data.version}/`;
 export const dateLabel = (value: string) =>
   `${value.slice(0, 4)}년 ${Number(value.slice(5, 7))}월 ${Number(value.slice(8, 10))}일`;
-export async function getApps() {
-  const apps = await getCollection("apps", ({ data }) => data.visible);
+async function sortApps() {
+  const apps = await getCollection("apps");
   return apps.sort(
     (a, b) =>
       a.data.order - b.data.order || a.data.slug.localeCompare(b.data.slug),
   );
+}
+export async function getApps() {
+  return (await sortApps()).filter((entry) => entry.data.visible);
+}
+export async function getAllApps() {
+  return sortApps();
 }
 export async function getCurrentDocuments(app: string) {
   return getCollection("legal", ({ data }) => data.app === app && data.current);

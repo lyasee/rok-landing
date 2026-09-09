@@ -8,6 +8,7 @@ const routes = [
   "/mecodi/terms/",
   "/mecodi/privacy/versions/2026-09-08/",
   "/mecodi/terms/versions/2026-09-08/",
+  "/movecut/privacy/",
   "/legal/",
   "/wego",
   "/wego/privacy",
@@ -101,6 +102,26 @@ test("published legal document has working TOC, cross-links and version history"
     "/mecodi/privacy/versions/2026-09-08/",
   );
 });
+test("MoveCut privacy policy is published and links to its terms", async ({
+  page,
+}) => {
+  await page.goto("/movecut/privacy/");
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+    "content",
+    "index,follow",
+  );
+  await expect(
+    page.getByText("시행일 2026년 9월 9일", { exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.locator('a[href="mailto:c335544@gmail.com"]').first(),
+  ).toBeVisible();
+  await expect(page.locator('a[href="/movecut/terms/"]').first()).toBeVisible();
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    "https://rok.gg/movecut/privacy/",
+  );
+});
 test("FAQ works without application JavaScript", async ({ page }) => {
   await page.goto("/mecodi/");
   const question = page.locator(".faq-list details").first();
@@ -117,6 +138,7 @@ for (const width of [360, 390, 768, 1280])
       "/mecodi/",
       "/mecodi/privacy/",
       "/mecodi/terms/",
+      "/movecut/privacy/",
       "/legal/",
     ]) {
       await page.goto(route);
@@ -137,6 +159,7 @@ test("sitemap includes published legal documents and unknown paths return 404", 
   expect(xml).toContain("https://rok.gg/mecodi/");
   expect(xml).toContain("https://rok.gg/mecodi/privacy/");
   expect(xml).toContain("https://rok.gg/mecodi/terms/");
+  expect(xml).toContain("https://rok.gg/movecut/privacy/");
   expect((await request.get("/missing-app-qa/")).status()).toBe(404);
 });
 test("all local links on new pages resolve to an existing page or anchor", async ({
@@ -148,6 +171,7 @@ test("all local links on new pages resolve to an existing page or anchor", async
     "/mecodi/",
     "/mecodi/privacy/",
     "/mecodi/terms/",
+    "/movecut/privacy/",
     "/legal/",
   ]) {
     await page.goto(route);
