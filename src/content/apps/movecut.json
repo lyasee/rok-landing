@@ -61,15 +61,15 @@
       "src": "/images/movecut/studio-light.webp",
       "alt": "무브컷 개발 버전의 실제 라이트 모드 화면",
       "caption": "라이트 모드",
-      "width": 390,
-      "height": 844
+      "width": 430,
+      "height": 932
     },
     {
       "src": "/images/movecut/studio-dark.webp",
       "alt": "무브컷 개발 버전의 실제 다크 모드 화면",
       "caption": "다크 모드",
-      "width": 390,
-      "height": 844
+      "width": 430,
+      "height": 932
     },
     {
       "src": "/images/movecut/promo/story.webp",

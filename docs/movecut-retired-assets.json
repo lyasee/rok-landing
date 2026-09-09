@@ -1,0 +1,42 @@
+[
+  {
+    "file": "studio-light.webp",
+    "sha256": "d4de7e4a119cf1d01822e603526716aebb1af6462fdefd1849907778144738c5",
+    "reason": "Retired people-based composition"
+  },
+  {
+    "file": "card-finish.webp",
+    "sha256": "517b453c6b531f13d0926ea7855aa60af395750b69bea100513370d8c9b76ba2",
+    "reason": "Retired people-based composition"
+  },
+  {
+    "file": "card-minimal.webp",
+    "sha256": "3aa856f83cfca3f3d323e863ec1104f7035b1b115b8f306f17dd38e98112fc70",
+    "reason": "Retired people-based composition"
+  },
+  {
+    "file": "social.webp",
+    "sha256": "b310c6bc797bfb979d3ffb299898bec163158c496437c87d7a2d80df2b72a18e",
+    "reason": "Retired people-based composition"
+  },
+  {
+    "file": "card-receipt.webp",
+    "sha256": "af99d080d0b7cdd7b3e880a760114a2cc5c56791c72a828808d0d43f000cdcca",
+    "reason": "Retired people-based composition"
+  },
+  {
+    "file": "studio-dark.webp",
+    "sha256": "42f5a9dd539fd39d6d48c81a2ed3bddd74adfc44bc14ee3a2cfd95eb674630ad",
+    "reason": "Retired people-based composition"
+  },
+  {
+    "file": "running.webp",
+    "sha256": "22411ac9b2101d46cac7aed667daaa571e4821bc21e53a670c8928513ab02870",
+    "reason": "Retired people-based composition"
+  },
+  {
+    "file": "promo/story.webp",
+    "sha256": "d692057ce059239cc994637d025489d144a27c0730c43345b1dc02f972b9ca12",
+    "reason": "Retired people-based composition"
+  }
+]

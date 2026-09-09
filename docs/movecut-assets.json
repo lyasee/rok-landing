@@ -1,68 +1,113 @@
 {
-  "providedPromotion": {
-    "source": "무브컷_달린_오늘을_기록하다.png",
-    "output": "/images/movecut/promo/story.webp",
-    "purpose": "홍보용 이미지 — 실제 앱 캡처와 구분",
-    "width": 400,
-    "height": 866,
-    "bytes": 45448
-  },
+  "reviewDate": "2026-09-09",
+  "scope": "Regenerated app demonstrations and marketing. No claim of model/property release.",
+  "underlyingPhotos": [
+    {
+      "path": "assets/samples/running.jpg",
+      "sha256": "b41b1fe355d8b2e1891102c53559e59edf7619406e7717db919806fddd33f198",
+      "sourcePage": "https://unsplash.com/photos/a-running-track-with-lines-painted-on-it-qdSAmbagnow",
+      "author": "Andrew McElroy"
+    },
+    {
+      "path": "assets/samples/run-golden.jpg",
+      "sha256": "3a5868433c1f425eddeb7090411db078f314f37fdc53dba484983e794c1f41ac",
+      "sourcePage": "https://unsplash.com/photos/the-sun-is-shining-through-the-trees-on-a-path-gT4CV0juw4s",
+      "author": "Torsten Dederichs"
+    },
+    {
+      "path": "assets/samples/hiking.jpg",
+      "sha256": "79640a2fc5535f4dd8c231d88f4d272f9e3f670b2f6bdd6b023aa91bd7da017e",
+      "sourcePage": "https://unsplash.com/photos/a-path-leading-to-the-top-of-a-mountain-OBq0oKOTgGc",
+      "author": "Ales Maze"
+    },
+    {
+      "path": "assets/samples/yoga.jpg",
+      "sha256": "2fec5de002421ebeea632e354a1dc49d61e6c1f10c2076825b38d89bef2e8535",
+      "sourcePage": "https://unsplash.com/photos/blue-textured-mat-with-sunlight-and-shadows-2-alKTZEL_k",
+      "author": "Vitalii Abakumov"
+    },
+    {
+      "path": "assets/samples/tennis.jpg",
+      "sha256": "3ac338dea5066b8cccd6ae499713ff1cce9bc760eaf5283f47ec88ae67a33010",
+      "sourcePage": "https://openai.com/policies/row-terms-of-use/",
+      "author": "Project-produced AI output; existing project audit provenance"
+    },
+    {
+      "path": "assets/samples/gym.jpg",
+      "sha256": "29bb8c7124c9c6491348a629662a6e5345a00b6d0d202f7b31bfae669f626b0e",
+      "sourcePage": "https://openai.com/policies/row-terms-of-use/",
+      "author": "Project-produced AI output; existing project audit provenance"
+    }
+  ],
   "assets": [
     {
       "name": "card-minimal",
-      "source": "/Users/smlee/projects/game/movecut/artifacts/signature-templates/exports/quiet-miles-4-5.png",
+      "source": "/Users/smlee/projects/game/movecut/artifacts/rights-final-20260909/web/ko/card-quiet-miles.png",
+      "sourceSha256": "75e080c5b023c066d9c4d9d570117f539ef3e17fde703004073a5668e04763f2",
       "output": "/images/movecut/card-minimal.webp",
+      "sha256": "5c30b23f4163020b64d305a7c61b71c45c56fac5043f80e2e9781a9e71527bcb",
       "width": 800,
-      "height": 1000,
-      "bytes": 83990
+      "height": 1000
     },
     {
       "name": "card-receipt",
-      "source": "/Users/smlee/projects/game/movecut/artifacts/signature-templates/exports/run-receipt-4-5.png",
+      "source": "/Users/smlee/projects/game/movecut/artifacts/rights-final-20260909/web/ko/card-run-receipt.png",
+      "sourceSha256": "01a62f26a6ea8bb1377c0b90a959499c301374cacc3c7c681885bb88e79d6a13",
       "output": "/images/movecut/card-receipt.webp",
+      "sha256": "91f958c16bd55979e8761fab664e476f7df1ea665a90001a8a7fb28ebeac5e94",
       "width": 800,
-      "height": 1000,
-      "bytes": 60664
+      "height": 1000
     },
     {
       "name": "card-finish",
-      "source": "/Users/smlee/projects/game/movecut/artifacts/signature-templates/exports/finish-line-4-5.png",
+      "source": "/Users/smlee/projects/game/movecut/artifacts/rights-final-20260909/web/ko/card-finish-line.png",
+      "sourceSha256": "de5fc9a7aebe8e6ec1524811581691ae041e1ffb77a77dcafcf2934be33b5756",
       "output": "/images/movecut/card-finish.webp",
+      "sha256": "a7d431d492394be8d6f44ae68297229975be85e39f29deaca90460b1437b8c33",
       "width": 800,
-      "height": 1000,
-      "bytes": 73788
+      "height": 1000
     },
     {
       "name": "studio-light",
-      "source": "/Users/smlee/projects/game/movecut/artifacts/signature-templates/regression/studio-light.png",
+      "source": "/Users/smlee/projects/game/movecut/artifacts/rights-final-20260909/web/ko/01-home-light.png",
+      "sourceSha256": "6db369d589b34b7dec931d7850b85f4665358bc875f2e3a13d1b195fd640d161",
       "output": "/images/movecut/studio-light.webp",
-      "width": 390,
-      "height": 844,
-      "bytes": 38758
+      "sha256": "a80ea384cf3021dd3e88dd952cf0e12bfeed7117dc254e013e619ad9666952d9",
+      "width": 430,
+      "height": 932
     },
     {
       "name": "studio-dark",
-      "source": "/Users/smlee/projects/game/movecut/artifacts/signature-templates/regression/studio-dark.png",
+      "source": "/Users/smlee/projects/game/movecut/artifacts/rights-final-20260909/web/ko/05-home-dark.png",
+      "sourceSha256": "38fd0492b1ee86b6a014a20eb4d8b28625f7cdcfa10ed12ed710d2a40d4d701a",
       "output": "/images/movecut/studio-dark.webp",
-      "width": 390,
-      "height": 844,
-      "bytes": 39610
+      "sha256": "88d63a8b15bb220715829d27c23e63d4d10e0307aaf66abef7d34f7fcea247f0",
+      "width": 430,
+      "height": 932
     },
     {
       "name": "running",
-      "source": "/Users/smlee/projects/game/movecut/assets/samples/run-golden.jpg",
+      "source": "Reviewed run-golden.jpg and current application captures only",
       "output": "/images/movecut/running.webp",
+      "sha256": "961d1aea62a86d2fa60a58f72c43bb23db1e512ebdb4172d5426167b80a42194",
       "width": 1600,
-      "height": 900,
-      "bytes": 241056
+      "height": 1066
     },
     {
       "name": "social",
-      "source": "Local composition of the three actual app card exports",
+      "source": "Reviewed run-golden.jpg and current application captures only",
       "output": "/images/movecut/social.webp",
+      "sha256": "c891d7a35e30bf3e86c0127ee1ab7f277dcd184be8f1b1079d0bf222c3bc024e",
       "width": 1200,
-      "height": 630,
-      "bytes": 46190
+      "height": 630
+    },
+    {
+      "name": "promo/story",
+      "source": "Reviewed run-golden.jpg and current application captures only",
+      "output": "/images/movecut/promo/story.webp",
+      "sha256": "19687646e1e90a8500d330712bfdbb1e31013168d8d11e8739f1a96fbb3835c9",
+      "width": 400,
+      "height": 866
     }
   ]
 }
