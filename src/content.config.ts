@@ -4,9 +4,7 @@ import { glob } from "astro/loaders";
 const slug = z.string().regex(/^[a-z][a-z0-9-]*$/);
 const localAsset = z
   .string()
-  .regex(
-    /^(?:\/images\/[a-zA-Z0-9/_-]+\.(png|jpe?g|webp|svg)|\/logo(?:192|512)\.png)$/,
-  );
+  .regex(/^\/images\/[a-zA-Z0-9/_-]+\.(png|jpe?g|webp|svg)$/);
 const date = z
   .string()
   .regex(/^\d{4}-\d{2}-\d{2}$/)
