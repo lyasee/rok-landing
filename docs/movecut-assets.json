@@ -1,0 +1,68 @@
+{
+  "providedPromotion": {
+    "source": "무브컷_달린_오늘을_기록하다.png",
+    "output": "/images/movecut/promo/story.webp",
+    "purpose": "홍보용 이미지 — 실제 앱 캡처와 구분",
+    "width": 400,
+    "height": 866,
+    "bytes": 45448
+  },
+  "assets": [
+    {
+      "name": "card-minimal",
+      "source": "/Users/smlee/projects/game/movecut/artifacts/signature-templates/exports/quiet-miles-4-5.png",
+      "output": "/images/movecut/card-minimal.webp",
+      "width": 800,
+      "height": 1000,
+      "bytes": 83990
+    },
+    {
+      "name": "card-receipt",
+      "source": "/Users/smlee/projects/game/movecut/artifacts/signature-templates/exports/run-receipt-4-5.png",
+      "output": "/images/movecut/card-receipt.webp",
+      "width": 800,
+      "height": 1000,
+      "bytes": 60664
+    },
+    {
+      "name": "card-finish",
+      "source": "/Users/smlee/projects/game/movecut/artifacts/signature-templates/exports/finish-line-4-5.png",
+      "output": "/images/movecut/card-finish.webp",
+      "width": 800,
+      "height": 1000,
+      "bytes": 73788
+    },
+    {
+      "name": "studio-light",
+      "source": "/Users/smlee/projects/game/movecut/artifacts/signature-templates/regression/studio-light.png",
+      "output": "/images/movecut/studio-light.webp",
+      "width": 390,
+      "height": 844,
+      "bytes": 38758
+    },
+    {
+      "name": "studio-dark",
+      "source": "/Users/smlee/projects/game/movecut/artifacts/signature-templates/regression/studio-dark.png",
+      "output": "/images/movecut/studio-dark.webp",
+      "width": 390,
+      "height": 844,
+      "bytes": 39610
+    },
+    {
+      "name": "running",
+      "source": "/Users/smlee/projects/game/movecut/assets/samples/run-golden.jpg",
+      "output": "/images/movecut/running.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 241056
+    },
+    {
+      "name": "social",
+      "source": "Local composition of the three actual app card exports",
+      "output": "/images/movecut/social.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 46190
+    }
+  ]
+}

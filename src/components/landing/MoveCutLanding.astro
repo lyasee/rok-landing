@@ -1,0 +1,544 @@
+---
+import StoreLinks from "@/components/StoreLinks.astro";
+import { SITE, documentPath, type AppInfo } from "@/lib/apps";
+import "@/styles/movecut.css";
+interface Props {
+  app: AppInfo;
+}
+const { app } = Astro.props;
+const cards = app.screenshots.slice(0, 3);
+const light = app.screenshots[3],
+  dark = app.screenshots[4],
+  promotion = app.screenshots[5];
+const canonical = new URL("/movecut/", SITE.url).href;
+const ogImage = new URL("/images/movecut/social.webp", SITE.url).href;
+const storesReady = Object.entries(app.stores).some(
+  ([key, url]) =>
+    url && app.storeStatus?.[key as "googlePlay" | "appStore"] === "available",
+);
+const cardTags = [
+  "KEEP IT SIMPLE",
+  "EVERY KILOMETER COUNTS",
+  "A MOMENT WORTH KEEPING",
+];
+const steps = [
+  {
+    title: "내 취향의 프레임을 고르고",
+    body: "사진 한 장, 러닝 영수증, 완주 기념. 오늘의 장면에 어울리는 프레임을 찾아요.",
+  },
+  {
+    title: "지금 찍거나, 사진을 골라요",
+    body: "카메라와 사진 모드를 가볍게 오가세요. 고른 프레임은 그대로 유지돼요.",
+  },
+  {
+    title: "기록을 얹고, 나만의 한 장으로",
+    body: "거리·시간·문구를 입력하고 저장하세요. 다른 앱으로 바로 공유할 수도 있어요.",
+  },
+];
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "무브컷 · MoveCut",
+  applicationCategory: "PhotographyApplication",
+  operatingSystem: "Android, iOS",
+  url: canonical,
+  description: app.description,
+  image: ogImage,
+};
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" /><meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <title>무브컷 · MoveCut — 달린 오늘을, 남기고 싶은 한 장으로.</title>
+    <meta name="description" content={app.description} /><meta
+      name="theme-color"
+      content="#F7F2EC"
+    /><meta name="robots" content="index,follow" />
+    <link rel="canonical" href={canonical} /><link rel="icon" href={app.icon} />
+    <meta property="og:type" content="website" /><meta
+      property="og:locale"
+      content="ko_KR"
+    /><meta property="og:url" content={canonical} />
+    <meta
+      property="og:title"
+      content="MoveCut — 달린 오늘을, 한 장으로."
+    /><meta property="og:description" content={app.description} />
+    <meta property="og:image" content={ogImage} /><meta
+      property="og:image:width"
+      content="1200"
+    /><meta property="og:image:height" content="630" /><meta
+      property="og:image:alt"
+      content="무브컷 대표 러닝 카드 3종"
+    />
+    <meta name="twitter:card" content="summary_large_image" /><meta
+      name="twitter:title"
+      content="MoveCut — 달린 오늘을, 한 장으로."
+    /><meta name="twitter:image" content={ogImage} />
+    <meta name="referrer" content="strict-origin-when-cross-origin" /><script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(schema).replace(/</g, "\\u003c")}
+    />
+  </head>
+  <body class="mc-page">
+    <a class="mc-skip" href="#main">본문으로 건너뛰기</a>
+    <header class="mc-header">
+      <a class="mc-wordmark" href="/movecut/" aria-label="무브컷 처음으로"
+        >MoveCut<span>.</span></a
+      ><nav aria-label="주 메뉴">
+        <a href="/" class="mc-all-apps">모든 앱 ↗</a><a href="#features"
+          >프레임</a
+        ><a href="#how-it-works">사용 방법</a><a
+          class="mc-nav-cta"
+          href="#download">앱 만나보기 <span aria-hidden="true">↗</span></a
+        >
+      </nav>
+    </header>
+    <main id="main">
+      <section class="mc-hero mc-shell" aria-labelledby="hero-title">
+        <div class="mc-hero-copy">
+          <p class="mc-kicker">
+            <span class="mc-dot"></span> MORE THAN A RUN
+          </p><h1 id="hero-title">
+            달린 오늘을,<br /><span>남기고 싶은</span><br />한 장으로.
+          </h1><p class="mc-lead">
+            가볍게 달린 날도, 처음 완주한 날도.<br />사진 한 장에 기록과 기분을
+            함께 남겨요.
+          </p>
+          <div class="mc-actions">
+            <a class="mc-button" href="#features"
+              >내 취향의 프레임 찾기 <span aria-hidden="true">↗</span></a
+            ><a class="mc-text-link" href="#download"
+              >출시 소식 보기 <span aria-hidden="true">→</span></a
+            >
+          </div><p class="mc-availability">
+            iPhone · Android <span aria-hidden="true">/</span>
+            {app.releaseLabel}
+          </p>
+        </div>
+        <div class="mc-hero-art" aria-label="무브컷으로 만든 대표 카드 3종">
+          <div class="mc-orbit" aria-hidden="true"></div><svg
+            class="mc-trail"
+            viewBox="0 0 600 620"
+            fill="none"
+            aria-hidden="true"
+            ><path
+              d="M34 548C96 559 119 438 192 436C335 432 306 174 418 178C503 181 507 90 568 69"
+              stroke="currentColor"
+              stroke-width="1.3"
+              stroke-dasharray="5 10"></path><circle
+              cx="34"
+              cy="548"
+              r="6"
+              fill="currentColor"></circle><circle
+              cx="568"
+              cy="69"
+              r="6"
+              fill="currentColor"></circle></svg
+          >
+          <figure class="mc-hero-card mc-hero-receipt">
+            <img
+              src={cards[1].src}
+              alt={cards[1].alt}
+              width="800"
+              height="1000"
+              decoding="async"
+            />
+          </figure>
+          <figure class="mc-hero-card mc-hero-finish">
+            <img
+              src={cards[2].src}
+              alt={cards[2].alt}
+              width="800"
+              height="1000"
+              decoding="async"
+            />
+          </figure>
+          <figure class="mc-hero-card mc-hero-main">
+            <img
+              src={cards[0].src}
+              alt={cards[0].alt}
+              width="800"
+              height="1000"
+              fetchpriority="high"
+            />
+          </figure>
+          <div class="mc-stamp" aria-hidden="true">
+            <span>MOVE A LITTLE</span><strong>keep<br />a lot.</strong><span
+              >YOUR EVERYDAY STORY</span
+            >
+          </div><span class="mc-floating-note">오늘도, 나의 페이스로.</span>
+        </div>
+      </section>
+      <div class="mc-proof-strip">
+        <div class="mc-shell">
+          <p><strong>33</strong><span>취향대로 고르는 프레임</span></p><p>
+            <strong>12</strong><span>오늘의 운동 종류</span>
+          </p><p>
+            <strong>3</strong><span>게시물·스토리에 맞는 비율</span>
+          </p><span class="mc-script" aria-hidden="true"
+            >Same sweat. New story.</span
+          >
+        </div>
+      </div>
+      <section
+        class="mc-section mc-shell"
+        id="features"
+        aria-labelledby="frames-title"
+      >
+        <div class="mc-section-head">
+          <div>
+            <p class="mc-kicker">THREE FRAMES TO FALL FOR</p><h2
+              id="frames-title"
+            >
+              같은 러닝.<br /><span class="mc-soft-italic">다른 이야기.</span>
+            </h2>
+          </div><p class="mc-intro">
+            사진이 주인공인 날,<br />숫자가 뿌듯한 날, 완주가 특별한 날.<br
+            />오늘에 꼭 맞는 한 장을 골라요.
+          </p>
+        </div>
+        <div class="mc-card-grid">
+          {
+            cards.map((card, i) => (
+              <article class={`mc-frame-card mc-frame-${i}`}>
+                <>
+                  <button
+                    type="button"
+                    class="mc-image-button"
+                    data-image={card.src}
+                    data-caption={card.caption}
+                    aria-label={`${card.caption} 카드 크게 보기`}
+                  >
+                    <>
+                      <img
+                        src={card.src}
+                        alt={card.alt}
+                        width={card.width}
+                        height={card.height}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <span class="mc-expand" aria-hidden="true">
+                        ↗
+                      </span>
+                    </>
+                  </button>
+                  <div class="mc-frame-copy">
+                    <>
+                      <p class="mc-micro">
+                        0{i + 1} / {cardTags[i]}
+                      </p>
+                      <h3>{app.features[i].title}</h3>
+                      <p>{app.features[i].description}</p>
+                    </>
+                  </div>
+                </>
+              </article>
+            ))
+          }
+        </div><p class="mc-caption">
+          실제 앱에서 저장한 카드 예시입니다. 기록 값과 문구는 직접 입력할 수
+          있어요.
+        </p>
+      </section>
+      <section class="mc-way" id="how-it-works" aria-labelledby="way-title">
+        <div class="mc-shell mc-way-grid">
+          <div class="mc-promo-wrap">
+            <span class="mc-promo-label">YOUR RUN, YOUR STORY</span><button
+              type="button"
+              class="mc-promo-button mc-image-button"
+              data-image={promotion.src}
+              data-caption="무브컷 홍보 이미지"
+              aria-label="무브컷 홍보 이미지 크게 보기"
+              ><img
+                src={promotion.src}
+                alt={promotion.alt}
+                width={promotion.width}
+                height={promotion.height}
+                loading="lazy"
+                decoding="async"
+              /><span class="mc-expand" aria-hidden="true">↗</span></button
+            ><span class="mc-script mc-promo-script" aria-hidden="true"
+              >More than<br />a run.</span
+            >
+          </div>
+          <div class="mc-way-copy">
+            <p class="mc-kicker">LESS EDITING. MORE FEELING.</p><h2
+              id="way-title"
+            >
+              고르고, 찍고,<br />바로 남기기.
+            </h2><p class="mc-intro">
+              앱을 오래 붙잡고 있을 필요 없어요.<br />마음에 드는 프레임으로
+              가볍게 시작하세요.
+            </p><ol class="mc-steps">
+              {
+                steps.map((step, i) => (
+                  <li>
+                    <>
+                      <span class="mc-step-number">0{i + 1}</span>
+                      <div>
+                        <>
+                          <h3>{step.title}</h3>
+                          <p>{step.body}</p>
+                        </>
+                      </div>
+                    </>
+                  </li>
+                ))
+              }
+            </ol><a class="mc-text-link" href="#screens"
+              >앱 화면 살펴보기 <span aria-hidden="true">↘</span></a
+            >
+          </div>
+        </div>
+      </section>
+      <section class="mc-mood" id="screens" aria-labelledby="mood-title">
+        <div class="mc-shell mc-mood-grid">
+          <div class="mc-mood-copy">
+            <p class="mc-kicker">SAME MOMENT. DIFFERENT MOOD.</p><h2
+              id="mood-title"
+            >
+              라이트도, 다크도.<br />내 취향대로.
+            </h2><p class="mc-intro">
+              아침의 밝은 공기에도, 저녁의 깊은 분위기에도.<br />화면의 모드는
+              바꿔도 사진의 색은 그대로예요.
+            </p>
+            <div
+              class="mc-mode-controls"
+              data-mode-controls
+              hidden
+              role="tablist"
+              aria-label="앱 화면 모드 미리보기"
+            >
+              <button
+                type="button"
+                id="mode-light-tab"
+                role="tab"
+                aria-controls="mode-light"
+                aria-selected="true"
+                data-mode="light">☀ <span>라이트</span></button
+              ><button
+                type="button"
+                id="mode-dark-tab"
+                role="tab"
+                aria-controls="mode-dark"
+                aria-selected="false"
+                tabindex="-1"
+                data-mode="dark">☾ <span>다크</span></button
+              >
+            </div>
+            <div class="mc-mood-notes">
+              <p>
+                <span aria-hidden="true">↔</span> 카메라와 사진, 한 번에 전환
+              </p><p>
+                <span aria-hidden="true">▧</span> 4:5 · 9:16 · 1:1 비율 지원
+              </p><p>
+                <span aria-hidden="true">↗</span> 1080px PNG로 저장·공유
+              </p>
+            </div><p class="mc-mood-disclaimer">
+              직접 입력한 거리와 시간으로 평균 페이스를 계산합니다.<br />GPS
+              측정이나 다른 운동 앱 자동 연동은 제공하지 않습니다.
+            </p>
+          </div>
+          <div class="mc-screen-stage" data-screen-stage data-tone="light">
+            <div class="mc-screen-halo" aria-hidden="true"></div><div
+              class="mc-phone"
+            >
+              <div
+                id="mode-light"
+                role="tabpanel"
+                aria-labelledby="mode-light-tab"
+              >
+                <img
+                  src={light.src}
+                  alt={light.alt}
+                  width={light.width}
+                  height={light.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div><div
+                id="mode-dark"
+                role="tabpanel"
+                aria-labelledby="mode-dark-tab"
+                hidden
+              >
+                <img
+                  src={dark.src}
+                  alt={dark.alt}
+                  width={dark.width}
+                  height={dark.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div><span class="mc-screen-tag" data-screen-label
+              >LIGHT / 실제 앱 화면</span
+            >
+          </div>
+        </div>
+      </section>
+      <section class="mc-section mc-shell mc-faq" aria-labelledby="faq-title">
+        <div>
+          <p class="mc-kicker">BEFORE YOUR NEXT RUN</p><h2 id="faq-title">
+            궁금한 점,<br />가볍게 확인해요.
+          </h2><a class="mc-text-link" href={documentPath(app.slug, "privacy")}
+            >개인정보처리방침 <span aria-hidden="true">↗</span></a
+          >
+        </div><div class="mc-faq-list">
+          {
+            app.faq.map((item) => (
+              <details>
+                <>
+                  <summary>
+                    {item.question}
+                    <span aria-hidden="true">+</span>
+                  </summary>
+                  <p>{item.answer}</p>
+                </>
+              </details>
+            ))
+          }
+        </div>
+      </section>
+      <section
+        class="mc-download"
+        id="download"
+        aria-labelledby="download-title"
+      >
+        <img
+          class="mc-download-photo"
+          src="/images/movecut/running.webp"
+          alt=""
+          width="1600"
+          height="1067"
+          loading="lazy"
+          decoding="async"
+        /><div class="mc-download-shade" aria-hidden="true"></div><div
+          class="mc-shell mc-download-content"
+        >
+          <p class="mc-kicker">RUN TODAY. KEEP THE FEELING.</p><h2
+            id="download-title"
+          >
+            다음 러닝은,<br />어떤 한 장일까요?
+          </h2><p>
+            {
+              storesReady
+                ? "지금 쓰는 휴대폰의 스토어에서 무브컷을 만나보세요."
+                : "iPhone과 Android에서 만날 날을 준비하고 있어요."
+            }
+          </p><StoreLinks app={app} /><p class="mc-store-note">
+            {
+              storesReady
+                ? "가격과 제공 기능은 각 스토어의 안내를 확인해주세요."
+                : "스토어 공개 후 다운로드 링크와 이용 조건을 안내합니다."
+            }
+          </p><a class="mc-download-back" href="#features">프레임 다시 보기 ↑</a
+          >
+        </div>
+      </section>
+    </main>
+    <footer class="mc-footer mc-shell">
+      <div class="mc-footer-top">
+        <div>
+          <a class="mc-wordmark" href="/movecut/">MoveCut<span>.</span></a><p>
+            움직인 오늘을, 오래 간직하는 방법.
+          </p>
+        </div><nav aria-label="하단 메뉴">
+          <a href="/">ROKGG 모든 앱 ↗</a><a
+            href={documentPath(app.slug, "privacy")}>개인정보처리방침</a
+          ><a href={documentPath(app.slug, "terms")}>서비스 이용약관</a><a
+            href="mailto:c335544@gmail.com">문의하기</a
+          >
+        </nav>
+      </div><div class="mc-footer-bottom">
+        <p>© {new Date().getFullYear()} ROKGG. All rights reserved.</p><p>
+          {app.disclaimer}
+        </p>
+      </div>
+    </footer>
+    <dialog class="mc-lightbox" aria-label="이미지 크게 보기">
+      <button class="mc-lightbox-close" type="button" aria-label="이미지 닫기"
+        >×</button
+      ><figure>
+        <img src="" alt="" width="800" height="1000" /><figcaption></figcaption>
+      </figure>
+    </dialog>
+    <script>
+      const modal = document.querySelector<HTMLDialogElement>(".mc-lightbox");
+      let trigger: HTMLButtonElement | null = null;
+      document
+        .querySelectorAll<HTMLButtonElement>("[data-image]")
+        .forEach((button) =>
+          button.addEventListener("click", () => {
+            if (!modal || !button.dataset.image) return;
+            const image = modal.querySelector("img")!;
+            const source = button.querySelector("img")!;
+            image.src = button.dataset.image;
+            image.alt = source.alt;
+            image.width = source.width;
+            image.height = source.height;
+            modal.querySelector("figcaption")!.textContent =
+              button.dataset.caption ?? "";
+            trigger = button;
+            modal.showModal();
+            document.body.classList.add("mc-modal-open");
+          }),
+        );
+      modal
+        ?.querySelector("button")
+        ?.addEventListener("click", () => modal.close());
+      modal?.addEventListener("click", (event) => {
+        if (event.target === modal) modal.close();
+      });
+      modal?.addEventListener("close", () => {
+        document.body.classList.remove("mc-modal-open");
+        trigger?.focus({ preventScroll: true });
+      });
+      const controls = document.querySelector<HTMLElement>(
+        "[data-mode-controls]",
+      );
+      const tabs = [
+        ...document.querySelectorAll<HTMLButtonElement>("[data-mode]"),
+      ];
+      function selectMode(tab: HTMLButtonElement) {
+        const mode = tab.dataset.mode;
+        tabs.forEach((item) => {
+          const active = item === tab;
+          item.setAttribute("aria-selected", String(active));
+          item.tabIndex = active ? 0 : -1;
+          document.getElementById(`mode-${item.dataset.mode}`)!.hidden =
+            !active;
+        });
+        document.querySelector<HTMLElement>(
+          "[data-screen-stage]",
+        )!.dataset.tone = mode;
+        document.querySelector("[data-screen-label]")!.textContent =
+          `${mode === "dark" ? "DARK" : "LIGHT"} / 실제 앱 화면`;
+      }
+      tabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => selectMode(tab));
+        tab.addEventListener("keydown", (event) => {
+          if (["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) {
+            event.preventDefault();
+            const next =
+              event.key === "Home"
+                ? tabs[0]
+                : event.key === "End"
+                  ? tabs[tabs.length - 1]
+                  : tabs[(index + 1) % tabs.length];
+            selectMode(next);
+            next.focus();
+          }
+        });
+      });
+      if (controls) controls.hidden = false;
+    </script>
+  </body>
+</html>
