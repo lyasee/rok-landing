@@ -1,0 +1,132 @@
+---
+import AppLayout from "@/layouts/AppLayout.astro";
+import { getAllApps } from "@/lib/apps";
+const entry = (await getAllApps()).find(({ data }) => data.slug === "movecut");
+if (!entry) throw new Error("MoveCut app entry is missing.");
+const app = entry.data;
+---
+
+<AppLayout
+  app={app}
+  locale="en"
+  title="MoveCut Support"
+  description="Help with MoveCut photos, permissions, saving, sharing, local data, purchases, and support requests."
+  canonical="/movecut/support/"
+>
+  <div class="shell legal-shell">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/movecut/">MoveCut</a><span aria-hidden="true">/</span><span
+        >Support</span
+      >
+    </nav>
+    <header class="legal-header">
+      <p class="eyebrow">MoveCut help</p>
+      <h1>Support</h1>
+      <p>Help with photos, permissions, saving, sharing, and purchases.</p>
+      <div class="legal-meta">
+        <span>MoveCut 1.3.0</span><span>English and Korean</span>
+      </div>
+    </header>
+    <div class="legal-grid">
+      <aside class="legal-sidebar">
+        <nav aria-label="On this page">
+          <h2>On this page</h2>
+          <ol>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#photos">Photos and permissions</a></li>
+            <li><a href="#saving">Saving and sharing</a></li>
+            <li><a href="#data">Local data and deletion</a></li>
+            <li><a href="#purchase">Purchase and reinstall</a></li>
+          </ol>
+        </nav>
+        <a href="/movecut/privacy/en/">Privacy Policy →</a>
+      </aside>
+      <article class="legal-content">
+        <h2 id="contact">1. Contact MoveCut support</h2>
+        <p>
+          Email <a href="mailto:c335544@gmail.com?subject=MoveCut%20Support"
+            >c335544@gmail.com</a
+          >. Include your device model, iOS or Android version, MoveCut version,
+          what you expected, and the steps that caused the issue.
+        </p>
+        <p>
+          Do not attach personal workout photos unless they are necessary to
+          explain the problem. MoveCut has no account system, so support will
+          never ask for a password or verification code.
+        </p>
+
+        <h2 id="photos">2. Photos and permissions</h2>
+        <p>
+          MoveCut asks for camera access only when you choose to take a photo.
+          Choosing an existing image uses your operating system’s photo picker.
+          Saving a finished card may require permission to add an image to
+          Photos.
+        </p>
+        <p>
+          If access was denied, open your device Settings, find MoveCut, and
+          allow Camera or Photos access for the feature you want to use. The app
+          does not require microphone, contacts, precise location, or tracking
+          permission.
+        </p>
+
+        <h2 id="saving">3. Saving and sharing</h2>
+        <p>
+          “Save to My Cards” keeps an editable record inside MoveCut. “Save to
+          Photos” writes a finished PNG to your photo library. “Share” opens the
+          system share sheet and sends the finished image only to the app you
+          choose.
+        </p>
+        <p>
+          If saving fails, confirm that your device has free storage and that
+          MoveCut can add photos. If sharing fails, try saving to Photos first
+          and share the saved image from the Photos app.
+        </p>
+
+        <h2 id="data">4. Local data, backup, and deletion</h2>
+        <p>
+          MoveCut stores photos and workout details locally and does not provide
+          an operator-run cloud account or cross-device sync. Delete a saved
+          entry from My Cards to remove that app record. Files already saved to
+          Photos must be deleted separately in Photos.
+        </p>
+        <p>
+          Deleting the app or clearing app data can remove your MoveCut library.
+          Device backups may behave differently depending on your iCloud,
+          Google, device, and operating system settings. Save important finished
+          cards to Photos before deleting or changing devices.
+        </p>
+
+        <h2 id="purchase">5. Purchase, reinstall, and refund help</h2>
+        <p>
+          MoveCut is sold as a one-time paid download. There is no subscription
+          or in-app purchase. Store billing, receipts, refunds, and download
+          access are managed by the App Store or Google Play account used for
+          the purchase.
+        </p>
+        <p>
+          To reinstall, sign in to the same store account and download MoveCut
+          from your purchase history when it remains available for your device
+          and region. A reinstall does not guarantee restoration of cards stored
+          only inside the app.
+        </p>
+        <ul>
+          <li>
+            <a href="https://support.apple.com/billing"
+              >Apple purchase and billing support</a>
+          </li>
+          <li>
+            <a href="https://support.google.com/googleplay/workflow/9813244"
+              >Google Play refund help</a>
+          </li>
+        </ul>
+
+        <h2>Privacy</h2>
+        <p>
+          Read the <a href="/movecut/privacy/en/">MoveCut Privacy Policy</a> for details
+          about local storage, permissions, sharing, backups, retention, and support
+          emails.
+        </p>
+      </article>
+    </div>
+  </div>
+</AppLayout>

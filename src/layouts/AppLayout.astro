@@ -7,6 +7,7 @@ interface Props {
   description: string;
   noindex?: boolean;
   canonical?: string;
+  locale?: "ko" | "en";
 }
 const {
   app,
@@ -14,14 +15,16 @@ const {
   description,
   noindex = false,
   canonical = Astro.url.pathname,
+  locale = "ko",
 } = Astro.props;
 const url = new URL(canonical, SITE.url).href;
 const icon = app?.icon ?? "/logo512.png";
 const isPublicApp = app?.visible === true;
+const english = locale === "en";
 ---
 
 <!doctype html>
-<html lang="ko">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" /><meta
       name="viewport"
@@ -40,14 +43,16 @@ const isPublicApp = app?.visible === true;
       content={description}
     /><meta property="og:type" content="website" /><meta
       property="og:locale"
-      content="ko_KR"
+      content={english ? "en_US" : "ko_KR"}
     />
     <meta property="og:url" content={url} /><meta
       property="og:image"
       content={new URL(icon, SITE.url).href}
     /><meta
       property="og:image:alt"
-      content={`${app?.name ?? SITE.name} 앱 아이콘`}
+      content={english
+        ? "MoveCut app icon"
+        : `${app?.name ?? SITE.name} 앱 아이콘`}
     />
     <meta name="twitter:card" content="summary" /><link
       rel="icon"
@@ -55,22 +60,43 @@ const isPublicApp = app?.visible === true;
     /><meta name="referrer" content="strict-origin-when-cross-origin" />
   </head>
   <body style={`--accent:${app?.accent ?? "#c44708"}`}>
-    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <a class="skip-link" href="#main"
+      >{english ? "Skip to content" : "본문으로 건너뛰기"}</a
+    >
     <header class="site-header">
       <div class="shell header-inner">
         <a href={isPublicApp ? appPath(app!.slug) : "/"} class="brand"
           >{app && <img src={app.icon} width="40" height="40" alt="" />}<span
-            >{app?.name ?? SITE.name}</span
+            >{
+              english && app?.slug === "movecut"
+                ? "MoveCut"
+                : (app?.name ?? SITE.name)
+            }</span
           ></a
         >
-        <nav aria-label="주 메뉴">
-          <a href="/">모든 앱</a>{
-            isPublicApp && <a href={`${appPath(app!.slug)}#features`}>기능</a>
-          }<a href="/legal/">이용 안내</a>{
-            isPublicApp && (
-              <a class="nav-cta" href={`${appPath(app.slug)}#download`}>
-                다운로드
-              </a>
+        <nav aria-label={english ? "Main navigation" : "주 메뉴"}>
+          {
+            english ? (
+              <>
+                <a href="/movecut/">MoveCut</a>
+                <a href="/movecut/privacy/en/">Privacy</a>
+                <a class="nav-cta" href="/movecut/support/">
+                  Support
+                </a>
+              </>
+            ) : (
+              <>
+                <a href="/">모든 앱</a>
+                {isPublicApp && (
+                  <a href={`${appPath(app!.slug)}#features`}>기능</a>
+                )}
+                <a href="/legal/">이용 안내</a>
+                {isPublicApp && (
+                  <a class="nav-cta" href={`${appPath(app.slug)}#download`}>
+                    다운로드
+                  </a>
+                )}
+              </>
             )
           }
         </nav>
@@ -80,26 +106,58 @@ const isPublicApp = app?.visible === true;
     <footer class="site-footer">
       <div class="shell footer-grid">
         <div>
-          <a href="/" class="footer-brand">ROKGG<span>알오케이지지</span></a><p>
-            매일의 작은 즐거움을 만드는 앱.
+          <a href="/" class="footer-brand"
+            >ROKGG<span>{english ? "Independent apps" : "알오케이지지"}</span
+            ></a
+          ><p>
+            {
+              english
+                ? "Small, thoughtful apps for everyday life."
+                : "매일의 작은 즐거움을 만드는 앱."
+            }
           </p><a href={`mailto:${SITE.email}`}>{SITE.email}</a>
         </div>
-        <nav aria-label="하단 메뉴">
-          <a href="/">전체 서비스</a>{
-            app && (
+        <nav aria-label={english ? "Footer navigation" : "하단 메뉴"}>
+          {
+            english ? (
               <>
-                <>
-                  <a href={documentPath(app.slug, "privacy")}>
-                    개인정보처리방침
-                  </a>
-                  <a href={documentPath(app.slug, "terms")}>서비스 이용약관</a>
-                </>
+                <a href="/movecut/privacy/en/">Privacy Policy</a>
+                <a href="/movecut/support/">Support</a>
+                <a href="/movecut/privacy/" lang="ko">
+                  한국어
+                </a>
+              </>
+            ) : (
+              <>
+                <a href="/">전체 서비스</a>
+                {app && (
+                  <>
+                    <a href={documentPath(app.slug, "privacy")}>
+                      개인정보처리방침
+                    </a>
+                    <a href={documentPath(app.slug, "terms")}>
+                      서비스 이용약관
+                    </a>
+                    {app.slug === "movecut" && (
+                      <a href="/movecut/support/">지원</a>
+                    )}
+                  </>
+                )}
+                <a href="/legal/">앱별 이용 안내</a>
               </>
             )
-          }<a href="/legal/">앱별 이용 안내</a>
+          }
         </nav>
       </div><div class="shell footer-bottom">
-        {app && <p>{app.disclaimer}</p>}<p>
+        {
+          app && (
+            <p>
+              {english
+                ? "MoveCut is an independent app provided by ROKGG."
+                : app.disclaimer}
+            </p>
+          )
+        }<p>
           © {new Date().getFullYear()} ROKGG.
         </p>
       </div>

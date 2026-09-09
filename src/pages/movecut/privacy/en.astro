@@ -1,0 +1,200 @@
+---
+import AppLayout from "@/layouts/AppLayout.astro";
+import { getAllApps } from "@/lib/apps";
+const entry = (await getAllApps()).find(({ data }) => data.slug === "movecut");
+if (!entry) throw new Error("MoveCut app entry is missing.");
+const app = entry.data;
+---
+
+<AppLayout
+  app={app}
+  locale="en"
+  title="MoveCut Privacy Policy"
+  description="How MoveCut handles photos, workout details, device permissions, storage, sharing, and support requests."
+  canonical="/movecut/privacy/en/"
+>
+  <div class="shell legal-shell">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/movecut/">MoveCut</a><span aria-hidden="true">/</span><span
+        >Privacy Policy</span
+      >
+    </nav>
+    <header class="legal-header">
+      <p class="eyebrow">MoveCut legal</p>
+      <h1>Privacy Policy</h1>
+      <p>
+        How MoveCut handles your photos, workout details, and device
+        permissions.
+      </p>
+      <div class="legal-meta">
+        <span>Version 2026-09-09</span><span>Effective September 9, 2026</span>
+      </div>
+    </header>
+    <div class="legal-grid">
+      <aside class="legal-sidebar">
+        <nav aria-label="On this page">
+          <h2>On this page</h2>
+          <ol>
+            <li><a href="#scope">Scope and operator</a></li>
+            <li><a href="#local-data">Data handled on your device</a></li>
+            <li><a href="#permissions">Permissions and choices</a></li>
+            <li><a href="#storage">Storage, saving, and sharing</a></li>
+            <li><a href="#services">Stores, backups, and this website</a></li>
+            <li><a href="#deletion">Retention and deletion</a></li>
+            <li><a href="#contact">Your rights and contact</a></li>
+            <li><a href="#children">Children and security</a></li>
+            <li><a href="#changes">Changes</a></li>
+          </ol>
+        </nav>
+        <a href="/movecut/support/">MoveCut Support →</a>
+      </aside>
+      <article class="legal-content">
+        <h2 id="scope">1. Scope and operator</h2>
+        <p>
+          This policy explains how ROKGG (the “operator”) handles information in
+          the MoveCut mobile app. MoveCut turns workout photos and details into
+          image cards.
+        </p>
+        <p>
+          <strong>Operator and privacy contact:</strong> ROKGG · <a
+            href="mailto:c335544@gmail.com">c335544@gmail.com</a>
+        </p>
+
+        <h2 id="local-data">2. Data handled on your device</h2>
+        <p>
+          MoveCut has no registration, login, account sync, advertising,
+          analytics SDK, or operator-run server upload. The app processes the
+          following information locally when you choose or enter it:
+        </p>
+        <table>
+          <thead
+            ><tr><th>Information</th><th>Purpose</th><th>Location</th></tr
+            ></thead
+          >
+          <tbody>
+            <tr
+              ><td>Photos you select or take</td><td>Create and edit cards</td
+              ><td>MoveCut’s on-device app storage</td></tr
+            >
+            <tr
+              ><td>Activity, date, time, distance, and note</td><td
+                >Display your card and library entry</td
+              ><td>MoveCut’s on-device app storage</td></tr
+            >
+            <tr
+              ><td>Template, aspect ratio, colors, crop, and zoom</td><td
+                >Restore your edit</td
+              ><td>MoveCut’s on-device app storage</td></tr
+            >
+            <tr
+              ><td>App preferences and local record identifiers</td><td
+                >Remember settings and distinguish records</td
+              ><td>MoveCut’s on-device app storage</td></tr
+            >
+          </tbody>
+        </table>
+        <p>
+          MoveCut may resize a selected photo into an app-managed copy for
+          editing. It does not upload your photos, workout details, finished
+          cards, or photo EXIF metadata to the operator.
+        </p>
+
+        <h2 id="permissions">3. Permissions and choices</h2>
+        <p>
+          Camera access is requested only when you choose to take a photo. Photo
+          selection uses the operating system’s photo picker. Saving a finished
+          card may request permission to add it to your photo library, depending
+          on your device and operating system.
+        </p>
+        <p>
+          MoveCut does not use the microphone, contacts, precise location, or
+          advertising tracking. If you decline a permission, you can continue
+          using features that do not need it. You can change permissions at any
+          time in your device settings.
+        </p>
+
+        <h2 id="storage">4. Storage, saving, and sharing</h2>
+        <p>
+          Saving a card inside MoveCut stores an app-managed photo copy, card
+          image, and edit details on your device. Deleting an entry from My
+          Cards also asks the app to delete its related app-managed files.
+        </p>
+        <p>
+          If you save a finished PNG to Photos, that file is separate from
+          MoveCut’s library. Delete it in the Photos app if you no longer want
+          it. If you choose Share, MoveCut passes only the finished image to the
+          operating system share sheet and the app you select. The recipient
+          app’s privacy policy applies after sharing.
+        </p>
+
+        <h2 id="services">5. App stores, device backups, and this website</h2>
+        <p>
+          MoveCut does not send app content to advertising or analytics
+          services. Apple or Google may separately process purchase,
+          installation, update, security, and purchase-restoration information
+          under their own privacy policies.
+        </p>
+        <p>
+          Your operating system and Apple iCloud or Google account settings may
+          include MoveCut data in a device backup. The operator cannot access
+          those backups. Backup availability, retention, and deletion are
+          controlled by your device and backup provider.
+        </p>
+        <p>
+          This policy and the support page are hosted on GitHub Pages. GitHub
+          may process technical logs, such as an IP address, to deliver and
+          secure the website. See the <a
+            href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
+            >GitHub General Privacy Statement</a
+          > and <a
+            href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection"
+            >GitHub Pages data collection notice</a
+          >. These pages do not include visitor analytics scripts.
+        </p>
+
+        <h2 id="deletion">6. Retention and deletion</h2>
+        <p>
+          MoveCut keeps local photos, cards, workout details, and preferences
+          until you delete a record, clear app data, or delete the app. Copies
+          saved to Photos, included in a device backup, or sent to another app
+          must be deleted through that photo library, backup service, or
+          recipient app.
+        </p>
+        <p>
+          The operator cannot look up or delete information stored only inside
+          the app because it is never received by the operator. You may revoke
+          camera or photo access in device settings at any time.
+        </p>
+
+        <h2 id="contact">7. Your rights and contact</h2>
+        <p>
+          If you email support, the operator receives your email address and
+          message to answer your request. You may ask to access, correct, or
+          delete that correspondence when no legal retention duty applies.
+          Contact <a href="mailto:c335544@gmail.com">c335544@gmail.com</a> and include
+          “MoveCut” in the subject.
+        </p>
+
+        <h2 id="children">8. Children and security</h2>
+        <p>
+          MoveCut is not directed primarily to children under the applicable
+          minimum age. It does not ask for an age or create user accounts.
+          Parents and guardians should supervise photo selection and sharing
+          when a child uses the app.
+        </p>
+        <p>
+          MoveCut relies on the operating system’s app sandbox and permission
+          controls. Use a device passcode and current operating system security
+          updates to help protect locally stored information.
+        </p>
+
+        <h2 id="changes">9. Changes to this policy</h2>
+        <p>
+          If MoveCut’s data handling or external services change, this page will
+          be updated with a new version and effective date. This policy is
+          effective September 9, 2026.
+        </p>
+      </article>
+    </div>
+  </div>
+</AppLayout>
