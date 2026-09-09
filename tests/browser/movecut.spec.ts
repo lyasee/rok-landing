@@ -131,6 +131,19 @@ test("all landing assets load locally without third-party requests or runtime er
   expect(external).toEqual([]);
   expect(errors).toEqual([]);
 });
+test("landing background reaches the viewport top without collapsing the header inset", async ({
+  page,
+}) => {
+  await page.goto("/movecut/");
+  const layout = await page.locator("body.mc-page").evaluate((body) => ({
+    bodyTop: body.getBoundingClientRect().top,
+    headerTop: body
+      .querySelector<HTMLElement>(".mc-header")!
+      .getBoundingClientRect().top,
+  }));
+  expect(layout.bodyTop).toBe(0);
+  expect(layout.headerTop).toBeGreaterThan(0);
+});
 for (const width of [320, 360, 390, 768, 1280, 1440]) {
   test(`MoveCut responsive layout has no horizontal page overflow at ${width}px`, async ({
     page,

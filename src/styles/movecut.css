@@ -10,6 +10,7 @@
   --line: #e1d7cd;
   --serif: Georgia, "AppleMyungjo", "Noto Serif KR", serif;
   margin: 0;
+  display: flow-root;
   background: var(--paper);
   color: var(--ink);
   font-family:
