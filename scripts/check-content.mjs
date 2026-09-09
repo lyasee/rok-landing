@@ -9,7 +9,9 @@ export function checkContent(root, { release = false } = {}) {
     slugs = new Set();
   const asset = (value) =>
     typeof value === "string" &&
-    /^\/images\/[a-zA-Z0-9/_-]+\.(png|jpe?g|webp|svg)$/.test(value) &&
+    /^(?:\/images\/[a-zA-Z0-9/_-]+\.(png|jpe?g|webp|svg)|\/logo(?:192|512)\.png)$/.test(
+      value,
+    ) &&
     existsSync(path.join(root, "public", value));
   for (const app of apps) {
     if (

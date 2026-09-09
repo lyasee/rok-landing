@@ -7,7 +7,7 @@
   "visible": false,
   "order": 30,
   "accent": "#c7e548",
-  "icon": "/images/app-placeholder.svg",
+  "icon": "/logo512.png",
   "launchStatus": "coming-soon",
   "releaseLabel": "출시 준비 중",
   "releaseNote": "무브컷 앱의 개인정보처리방침과 서비스 이용약관을 안내합니다.",
@@ -15,7 +15,7 @@
     "line1": "운동한 오늘을,",
     "line2": "한 장으로 남겨요.",
     "body": "사진과 운동 기록을 기기에 보관하고, 나만의 카드로 남겨보세요.",
-    "image": "/images/app-placeholder.svg",
+    "image": "/logo512.png",
     "imageAlt": "무브컷 앱 안내",
     "width": 400,
     "height": 400
