@@ -93,6 +93,7 @@ test("published legal document has working TOC, cross-links and version history"
   await expect(
     page.getByText("시행일 2026년 9월 8일", { exact: true }),
   ).toBeVisible();
+  await expect(page.locator("main")).toContainText("만 16세 이상 이용자");
   for (const anchor of await page
     .locator('.legal-sidebar a[href^="#"]')
     .all()) {
@@ -122,8 +123,9 @@ test("MoveCut privacy policy is published and links to its terms", async ({
     page.getByText("시행일 2026년 9월 9일", { exact: true }),
   ).toBeVisible();
   await expect(
-    page.locator('a[href="mailto:c335544@gmail.com"]').first(),
+    page.locator('a[href="mailto:notice.rokgg@gmail.com"]').first(),
   ).toBeVisible();
+  await expect(page.locator("main")).toContainText("만 18세 이상 이용자");
   await expect(page.locator('a[href="/movecut/terms/"]').first()).toBeVisible();
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
     "href",

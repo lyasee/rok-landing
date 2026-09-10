@@ -139,6 +139,10 @@ test("draft policies and version routes remain review-only and canonical", async
     await expect(
       page.locator(`a[href="/pogeun-diary/${kind}/versions/2026-09-10/"]`),
     ).toBeVisible();
+    if (kind === "privacy")
+      await expect(page.locator("main")).toContainText(
+        "특정 연령 이상을 이용 조건으로 두지 않습니다",
+      );
 
     await page.goto(`/pogeun-diary/${kind}/versions/2026-09-10/`);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
