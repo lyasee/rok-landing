@@ -138,8 +138,8 @@ const english = locale === "en";
                     <a href={documentPath(app.slug, "terms")}>
                       서비스 이용약관
                     </a>
-                    {app.slug === "movecut" && (
-                      <a href="/movecut/support/">지원</a>
+                    {["movecut", "pogeun-diary"].includes(app.slug) && (
+                      <a href={`/${app.slug}/support/`}>지원</a>
                     )}
                   </>
                 )}

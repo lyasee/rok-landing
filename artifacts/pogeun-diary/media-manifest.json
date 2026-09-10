@@ -1,0 +1,54 @@
+{
+  "updatedAt": "2026-09-10T05:59:22.462Z",
+  "captureMode": "Native iPhone simulator, synthetic diary records; proportional WebP conversion",
+  "images": [
+    {
+      "scene": "home",
+      "source": "assets/store/raw/ios-phone/05-home.png",
+      "sourceSha256": "8568ba03549f874753065aab22c14341efd232c28b338230b860ec9d32da43da",
+      "websiteFile": "public/images/pogeun-diary/screen-home.webp",
+      "width": 660,
+      "height": 1434
+    },
+    {
+      "scene": "editor",
+      "source": "assets/store/raw/ios-phone/01-editor.png",
+      "sourceSha256": "c4ebe2e482e5f2f430680e5e03ce67d380e48f2cf6024fd5957205f889807cb9",
+      "websiteFile": "public/images/pogeun-diary/screen-editor.webp",
+      "width": 660,
+      "height": 1434
+    },
+    {
+      "scene": "stickers",
+      "source": "assets/store/raw/ios-phone/02-stickers.png",
+      "sourceSha256": "b22c4a7265d57825753dcc73fe526008533b4b372caf139ae6cfa85653ccb772",
+      "websiteFile": "public/images/pogeun-diary/screen-stickers.webp",
+      "width": 660,
+      "height": 1434
+    },
+    {
+      "scene": "calendar",
+      "source": "assets/store/raw/ios-phone/04-calendar.png",
+      "sourceSha256": "782ccc06f795660df5211b34015bf6cc85fcf278d66b36a4f879b899993dd7ab",
+      "websiteFile": "public/images/pogeun-diary/screen-calendar.webp",
+      "width": 660,
+      "height": 1434
+    },
+    {
+      "scene": "papers",
+      "source": "assets/store/raw/ios-phone/03-papers.png",
+      "sourceSha256": "4309f7006d01a937d4de28cebd6444d70f218d009341880d75e162e7d08bff22",
+      "websiteFile": "public/images/pogeun-diary/screen-papers.webp",
+      "width": 660,
+      "height": 1434
+    },
+    {
+      "scene": "backup",
+      "source": "assets/store/raw/ios-phone/06-backup.png",
+      "sourceSha256": "9ac49c1a7a7590daad102f51787dae33200484af303dc403c340aa1806441221",
+      "websiteFile": "public/images/pogeun-diary/screen-backup.webp",
+      "width": 660,
+      "height": 1434
+    }
+  ]
+}

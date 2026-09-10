@@ -108,6 +108,43 @@ const loading = index === 0 ? "eager" : "lazy";
           </span>
           <span class="art-caption">실제 앱에서 만든 운동 카드 예시</span>
         </>
+      ) : app.slug === "pogeun-diary" ? (
+        <>
+          <span class="art-orbit art-orbit--pogeun" aria-hidden="true" />
+          <div class="pogeun-paper pogeun-paper--back float-piece">
+            <img
+              src="/images/pogeun-diary/screen-home.webp"
+              alt="포근일기 실제 개발 앱 홈 화면의 예시 기록"
+              width="390"
+              height="844"
+              loading="lazy"
+            />
+          </div>
+          <div class="pogeun-paper pogeun-paper--front float-piece">
+            <img
+              src={app.hero.image}
+              alt={app.hero.imageAlt}
+              width={app.hero.width}
+              height={app.hero.height}
+              loading="lazy"
+            />
+          </div>
+          <span
+            class="art-sticker art-sticker--pogeun float-piece"
+            aria-hidden="true"
+          >
+            ✦ 오늘의 한 장
+          </span>
+          <span class="art-note art-note--pogeun" aria-hidden="true">
+            Small note,
+            <br />
+            warm day.
+          </span>
+          <span class="art-spark art-spark--pogeun" aria-hidden="true">
+            ♡
+          </span>
+          <span class="art-caption">실제 개발 앱 화면 · 예시 기록</span>
+        </>
       ) : (
         <>
           <span class="art-orbit" aria-hidden="true" />

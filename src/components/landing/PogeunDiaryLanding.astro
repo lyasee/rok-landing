@@ -1,0 +1,252 @@
+---
+import StoreLinks from "@/components/StoreLinks.astro";
+import AppLayout from "@/layouts/AppLayout.astro";
+import { documentPath, type AppInfo } from "@/lib/apps";
+import "@/styles/pogeun-diary.css";
+
+interface Props {
+  app: AppInfo;
+}
+
+const { app } = Astro.props;
+const [home, editor, stickers, calendar, papers, backup] = app.screenshots;
+---
+
+<AppLayout
+  app={app}
+  title="포근일기 · Pogeun Diary — 글은 짧게, 하루는 귀엽게."
+  description={app.description}
+  canonical="/pogeun-diary/"
+>
+  <div class="pd-page">
+    <section class="pd-hero pd-shell" aria-labelledby="pd-hero-title">
+      <div class="pd-hero-copy">
+        <p class="pd-kicker"><span aria-hidden="true">✦</span> POGEUN DIARY</p>
+        <h1 id="pd-hero-title">글은 짧게,<br /><em>하루는 귀엽게.</em></h1>
+        <p class="pd-lead">
+          사진 한 장, 짧은 문장, 마음에 드는 스티커.<br />오늘의 기분을 나만의
+          한 페이지에 천천히 놓아보세요.
+        </p>
+        <div class="pd-actions">
+          <a class="pd-button" href="#screens">실제 화면 보기</a>
+          <a class="pd-text-link" href="/pogeun-diary/support/"
+            >도움말과 문의 <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <p class="pd-release">iPhone · Android · {app.releaseLabel}</p>
+      </div>
+
+      <div class="pd-hero-art" aria-label="포근일기 실제 앱 화면 예시">
+        <span class="pd-paper-shape pd-paper-shape--sage" aria-hidden="true"
+        ></span>
+        <span class="pd-paper-shape pd-paper-shape--blush" aria-hidden="true"
+        ></span>
+        <figure class="pd-phone pd-phone--back pd-float">
+          <img
+            src={home.src}
+            alt={home.alt}
+            width={home.width}
+            height={home.height}
+            fetchpriority="high"
+          />
+        </figure>
+        <figure class="pd-phone pd-phone--front pd-float">
+          <img
+            src={editor.src}
+            alt={editor.alt}
+            width={editor.width}
+            height={editor.height}
+            fetchpriority="high"
+          />
+        </figure>
+        <span class="pd-tape" aria-hidden="true"></span>
+        <span class="pd-hero-note">실제 앱 화면<br />예시 기록</span>
+      </div>
+    </section>
+
+    <aside class="pd-release-note pd-shell" aria-label="출시 상태">
+      <span>{app.releaseLabel}</span>
+      <p>{app.releaseNote}</p>
+    </aside>
+
+    <section
+      class="pd-section pd-shell"
+      id="features"
+      aria-labelledby="pd-features-title"
+    >
+      <div class="pd-heading">
+        <p class="pd-kicker">A PAGE FOR TODAY</p>
+        <h2 id="pd-features-title">
+          잘 쓰는 일기보다,<br />나답게 남긴 한 장.
+        </h2>
+        <p>
+          긴 글이 아니어도 괜찮아요. 손에 익는 도구만 골라<br />오늘의 표정과
+          장면을 한 페이지에 담아보세요.
+        </p>
+      </div>
+      <div class="pd-feature-grid">
+        {
+          app.features.map((feature, index) => (
+            <article class={`pd-feature pd-feature--${index + 1}`}>
+              <span>0{index + 1}</span>
+              <h3>{feature.title}</h3>
+              <p>{feature.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      class="pd-showcase"
+      id="screens"
+      aria-labelledby="pd-screens-title"
+    >
+      <div class="pd-shell">
+        <div class="pd-heading pd-heading--row">
+          <div>
+            <p class="pd-kicker">INSIDE THE DIARY</p>
+            <h2 id="pd-screens-title">실제 화면으로<br />미리 펼쳐보세요.</h2>
+          </div>
+          <p>
+            화면의 글과 스티커 배치는 기능을 보여주기 위한 예시입니다. 실제
+            이용자의 개인 기록은 사용하지 않았습니다.
+          </p>
+        </div>
+
+        <div class="pd-screen-grid">
+          {
+            [home, editor, stickers, calendar].map((shot, index) => (
+              <figure class={`pd-screen-card pd-screen-card--${index + 1}`}>
+                <div>
+                  <img
+                    src={shot.src}
+                    alt={shot.alt}
+                    width={shot.width}
+                    height={shot.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <figcaption>
+                  <span>0{index + 1}</span>
+                  {shot.caption}
+                  <small>실제 앱 화면 · 예시 기록</small>
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+
+        <div class="pd-paper-spread">
+          <figure class="pd-wide-shot">
+            <div>
+              <img
+                src={papers.src}
+                alt={papers.alt}
+                width={papers.width}
+                height={papers.height}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption>
+              <span>05</span>
+              <div>
+                <strong>{papers.caption}</strong>
+                <small>실제 앱 화면 · 예시 기록</small>
+              </div>
+            </figcaption>
+          </figure>
+          <div class="pd-paper-copy">
+            <p class="pd-kicker">PAPER & STICKERS</p>
+            <h2>8가지 속지,<br />72가지 작은 표정.</h2>
+            <p>
+              포근한 종이부터 모눈, 체크와 꽃 편지까지. 토끼·곰·고양이와 소품
+              스티커를 골라 오늘에 어울리는 분위기를 만들어요.
+            </p>
+            <p class="pd-fact-note">
+              화면 속 구성과 수량은 현재 개발 버전을 기준으로 합니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="pd-keepsake">
+          <div class="pd-keepsake-copy">
+            <p class="pd-kicker">KEEP IT YOUR WAY</p>
+            <h2>기기에 남기고,<br />필요할 때 직접 백업해요.</h2>
+            <p>
+              일기는 네이티브 앱의 로컬 SQLite에 보관됩니다. 계정이나 운영자
+              서버 동기화 없이, 암호로 보호한 백업 파일을 직접 내보내고 복원할
+              수 있어요.
+            </p>
+            <ul>
+              <li>백업 암호는 앱이나 운영자가 저장하지 않습니다.</li>
+              <li>기존 일반 JSON 백업도 읽을 수 있습니다.</li>
+              <li>암호화 백업은 기기 전체 데이터베이스 암호화와 다릅니다.</li>
+            </ul>
+          </div>
+          <figure class="pd-export-page">
+            <img
+              src={backup.src}
+              alt={backup.alt}
+              width={backup.width}
+              height={backup.height}
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              {backup.caption}<small>실제 앱 화면 · 예시 기록</small>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="pd-section pd-shell pd-faq" aria-labelledby="pd-faq-title">
+      <div class="pd-heading">
+        <p class="pd-kicker">BEFORE YOU BEGIN</p>
+        <h2 id="pd-faq-title">미리 알아두면<br />좋은 것들.</h2>
+        <a class="pd-text-link" href={documentPath(app.slug, "privacy")}
+          >개인정보처리방침 검토본 <span aria-hidden="true">↗</span></a
+        >
+      </div>
+      <div class="pd-faq-list">
+        {
+          app.faq.map((item) => (
+            <details>
+              <summary>
+                {item.question}
+                <span aria-hidden="true">+</span>
+              </summary>
+              <p>{item.answer}</p>
+            </details>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      class="pd-download"
+      id="download"
+      aria-labelledby="pd-download-title"
+    >
+      <div class="pd-shell">
+        <img src={app.icon} alt="" width="88" height="88" loading="lazy" />
+        <p class="pd-kicker">POGEUN DIARY</p>
+        <h2 id="pd-download-title">포근일기를<br />정성껏 준비하고 있어요.</h2>
+        <p>
+          iPhone과 Android에서 만날 날을 준비 중입니다.<br />일회 구매형으로
+          준비하고 있으며 최종 조건은 스토어 공개 시 안내합니다.
+        </p>
+        <StoreLinks app={app} />
+        <nav aria-label="포근일기 이용 안내">
+          <a href="/pogeun-diary/support/">지원과 자주 묻는 질문</a>
+          <a href={documentPath(app.slug, "privacy")}>개인정보처리방침 검토본</a
+          >
+          <a href={documentPath(app.slug, "terms")}>서비스 이용약관 검토본</a>
+        </nav>
+      </div>
+    </section>
+  </div>
+</AppLayout>

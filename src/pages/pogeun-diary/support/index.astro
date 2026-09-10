@@ -1,0 +1,118 @@
+---
+import AppLayout from "@/layouts/AppLayout.astro";
+import { getAllApps } from "@/lib/apps";
+
+const entry = (await getAllApps()).find(
+  ({ data }) => data.slug === "pogeun-diary",
+);
+if (!entry) throw new Error("Pogeun Diary app entry is missing.");
+const app = entry.data;
+const supportHref =
+  "mailto:notice.rokgg@gmail.com?subject=%5B%ED%8F%AC%EA%B7%BC%EC%9D%BC%EA%B8%B0%5D%20%EA%B3%A0%EA%B0%9D%EC%A7%80%EC%9B%90%20%EB%AC%B8%EC%9D%98";
+---
+
+<AppLayout
+  app={app}
+  title="포근일기 지원"
+  description="포근일기 사용 방법, 로컬 저장과 백업, 오류 문의에 필요한 정보를 안내합니다."
+  canonical="/pogeun-diary/support/"
+>
+  <div class="shell legal-shell">
+    <nav class="breadcrumbs" aria-label="현재 위치">
+      <a href="/pogeun-diary/">포근일기</a><span aria-hidden="true">/</span
+      ><span>지원</span>
+    </nav>
+    <header class="legal-header">
+      <p class="eyebrow">포근일기 도움말</p>
+      <h1>지원</h1>
+      <p>기록, 사진, 스티커, 로컬 저장과 백업에 관한 도움을 안내합니다.</p>
+      <div class="legal-meta">
+        <span>스토어 공개 준비 중</span><span>한국어 지원</span>
+      </div>
+    </header>
+
+    <div class="legal-grid">
+      <aside class="legal-sidebar">
+        <nav aria-label="이 페이지 목차">
+          <h2>이 페이지에서</h2>
+          <ol>
+            <li><a href="#contact">문의하기</a></li>
+            <li><a href="#report">오류를 알려주실 때</a></li>
+            <li><a href="#local">기록과 휴지통</a></li>
+            <li><a href="#backup">백업과 복원</a></li>
+            <li><a href="#lock">기기 잠금</a></li>
+          </ol>
+        </nav>
+        <a href="/pogeun-diary/privacy/">개인정보처리방침 →</a>
+      </aside>
+
+      <article class="legal-content">
+        <h2 id="contact">1. 문의하기</h2>
+        <p>
+          포근일기 지원 메일은 <a href={supportHref}>notice.rokgg@gmail.com</a
+          >입니다. 앱이 아직 스토어 공개 전이므로 최종 버전·가격·제공 지역은
+          공개 후 스토어 안내를 확인해 주세요.
+        </p>
+        <p>문의 내용과 확인 범위에 따라 답변까지 시간이 걸릴 수 있습니다.</p>
+
+        <h2 id="report">2. 오류를 알려주실 때</h2>
+        <p>
+          아래 정보를 글로 적어 보내주시면 문제를 확인하는 데 도움이 됩니다.
+        </p>
+        <ul>
+          <li>포근일기 앱 버전</li>
+          <li>기기 모델과 iOS 또는 Android 버전</li>
+          <li>기대했던 동작과 실제로 나타난 결과</li>
+          <li>문제가 생기기 전부터의 재현 순서</li>
+        </ul>
+        <p>
+          처음부터 일기 사진, 일기 원문, 백업 파일을 첨부하지 마세요. 백업 암호,
+          기기 비밀번호, 인증 코드도 절대 보내지 마세요. 꼭 필요한 자료가 있다면
+          먼저 텍스트로 문의한 뒤 안내를 확인해 주세요.
+        </p>
+
+        <h2 id="local">3. 기록, 삭제와 휴지통</h2>
+        <p>
+          포근일기의 일기와 설정은 네이티브 앱의 기기 내 SQLite와 앱 저장 영역에
+          보관됩니다. 계정이나 운영자 서버를 통한 클라우드 동기화는 제공하지
+          않습니다.
+        </p>
+        <p>
+          앱에서 삭제한 기록은 휴지통에서 복원할 수 있습니다. 휴지통을 비우거나
+          앱 데이터·앱 자체를 삭제하면 복구하지 못할 수 있습니다. 운영자는
+          기기에 있는 기록을 원격으로 조회하거나 복구·삭제할 수 없습니다.
+        </p>
+
+        <h2 id="backup">4. 백업과 복원</h2>
+        <p>
+          중요한 기록은 앱의 백업 기능으로 직접 내보내 보관하세요. 기본 백업은
+          이용자가 정한 암호로 보호되며, 암호는 앱이나 운영자가 저장하지
+          않습니다. 암호를 잊어버리면 복구할 수 없습니다.
+        </p>
+        <p>
+          이전 일반 JSON 백업은 호환을 위해 읽을 수 있습니다. 일반 JSON에는 일기
+          내용이 암호화되지 않은 채 포함될 수 있으므로 저장 위치와 전달 대상을
+          주의해서 선택하세요. 기기·운영체제의 iCloud 또는 Google 백업은
+          포근일기 앱이 제공하는 클라우드 동기화가 아니며, 복원 가능 여부는 해당
+          기기와 서비스 설정에 따라 달라집니다.
+        </p>
+
+        <h2 id="lock">5. 기기 잠금</h2>
+        <p>
+          네이티브 앱에서는 선택적으로 운영체제의 시스템 인증을 사용할 수
+          있습니다. 앱은 얼굴·지문 정보가 아니라 인증 성공 또는 실패 결과만
+          받습니다. 웹 미리보기에는 시스템 잠금이 없습니다.
+        </p>
+
+        <h2>개인정보와 이용 조건</h2>
+        <p>
+          자세한 내용은 <a href="/pogeun-diary/privacy/"
+            >개인정보처리방침 검토본</a
+          >과 <a href="/pogeun-diary/terms/">서비스 이용약관 검토본</a>에서
+          확인할 수 있습니다. 두 문서는 아직 공개 승인·시행되지 않은
+          검토본입니다.
+        </p>
+      </article>
+    </div>
+  </div>
+</AppLayout>

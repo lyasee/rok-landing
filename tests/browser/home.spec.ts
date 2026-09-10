@@ -7,12 +7,24 @@ test("home only lists registered visible apps and preserves actual launch states
 }) => {
   await page.goto("/");
   await expect(page).toHaveTitle(/ROK.GG.*취향대로/);
-  await expect(page.locator(".app-card")).toHaveCount(2);
+  await expect(page.locator(".app-card")).toHaveCount(3);
   await expect(page.locator("main")).not.toContainText(retired);
   await expect(page.locator('[data-app="mecodi"]')).toContainText(
     "메코디 2.0 미리보기",
   );
   await expect(page.locator('[data-app="movecut"]')).toContainText(
+    "스토어 공개 준비 중",
+  );
+  await expect(page.locator('[data-app="pogeun-diary"]')).toContainText(
+    "Pogeun Diary",
+  );
+  await expect(page.locator('[data-app="pogeun-diary"]')).toContainText(
+    "스티커 다이어리",
+  );
+  await expect(page.locator('[data-app="pogeun-diary"]')).toContainText(
+    "글은 짧게, 하루는 귀엽게.",
+  );
+  await expect(page.locator('[data-app="pogeun-diary"]')).toContainText(
     "스토어 공개 준비 중",
   );
   await expect(
@@ -21,12 +33,13 @@ test("home only lists registered visible apps and preserves actual launch states
   await expect(page.locator('meta[name="keywords"]')).toHaveCount(0);
 });
 
-test("both product cards navigate to their real landing pages", async ({
+test("all product cards navigate to their real landing pages", async ({
   page,
 }) => {
   for (const [name, slug] of [
     ["메코디", "mecodi"],
     ["무브컷", "movecut"],
+    ["포근일기", "pogeun-diary"],
   ]) {
     await page.goto("/");
     await page
@@ -205,7 +218,7 @@ test.describe("home without JavaScript", () => {
   }) => {
     await page.goto("/");
     await expect(page.locator("h1")).toBeVisible();
-    await expect(page.locator(".app-card")).toHaveCount(2);
+    await expect(page.locator(".app-card")).toHaveCount(3);
     await expect(page.locator("[data-motion-toggle]")).toBeHidden();
     await page
       .getByRole("link", { name: "무브컷 살펴보기", exact: true })

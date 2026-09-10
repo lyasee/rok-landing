@@ -9,6 +9,12 @@ const routes = [
   "/mecodi/privacy/versions/2026-09-08/",
   "/mecodi/terms/versions/2026-09-08/",
   "/movecut/privacy/",
+  "/pogeun-diary/",
+  "/pogeun-diary/support/",
+  "/pogeun-diary/privacy/",
+  "/pogeun-diary/terms/",
+  "/pogeun-diary/privacy/versions/2026-09-10/",
+  "/pogeun-diary/terms/versions/2026-09-10/",
   "/legal/",
   "/wego",
   "/wego/privacy",
@@ -141,6 +147,10 @@ for (const width of [360, 390, 768, 1280])
       "/mecodi/privacy/",
       "/mecodi/terms/",
       "/movecut/privacy/",
+      "/pogeun-diary/",
+      "/pogeun-diary/support/",
+      "/pogeun-diary/privacy/",
+      "/pogeun-diary/terms/",
       "/legal/",
     ]) {
       await page.goto(route);
@@ -162,6 +172,10 @@ test("sitemap includes published legal documents and unknown paths return 404", 
   expect(xml).toContain("https://rok.gg/mecodi/privacy/");
   expect(xml).toContain("https://rok.gg/mecodi/terms/");
   expect(xml).toContain("https://rok.gg/movecut/privacy/");
+  expect(xml).toContain("https://rok.gg/pogeun-diary/");
+  expect(xml).toContain("https://rok.gg/pogeun-diary/support/");
+  expect(xml).not.toContain("https://rok.gg/pogeun-diary/privacy/");
+  expect(xml).not.toContain("https://rok.gg/pogeun-diary/terms/");
   expect((await request.get("/missing-app-qa/")).status()).toBe(404);
 });
 test("all local links on new pages resolve to an existing page or anchor", async ({
@@ -174,6 +188,10 @@ test("all local links on new pages resolve to an existing page or anchor", async
     "/mecodi/privacy/",
     "/mecodi/terms/",
     "/movecut/privacy/",
+    "/pogeun-diary/",
+    "/pogeun-diary/support/",
+    "/pogeun-diary/privacy/",
+    "/pogeun-diary/terms/",
     "/legal/",
   ]) {
     await page.goto(route);

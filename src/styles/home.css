@@ -525,6 +525,17 @@ button:focus-visible {
   background: #c4d1ff5c;
   border: none;
 }
+.art-orbit--pogeun {
+  width: 350px;
+  height: 350px;
+  top: 43px;
+  left: 12%;
+  border: 1px solid #fff9;
+  background:
+    linear-gradient(#ffffff48 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff48 1px, transparent 1px), #e7cfcf66;
+  background-size: 25px 25px;
+}
 .mecodi-screen {
   position: absolute;
   z-index: 2;
@@ -714,6 +725,62 @@ button:focus-visible {
   color: #6678a5;
   font-size: 24px;
   transform: rotate(10deg);
+}
+.pogeun-paper {
+  position: absolute;
+  overflow: hidden;
+  padding: 7px;
+  border: 1px solid #eadbd4;
+  border-radius: 23px;
+  background: #fffdf8;
+  box-shadow: 0 18px 30px #6f4f5520;
+}
+.pogeun-paper img {
+  width: 100%;
+  height: auto;
+  border-radius: 17px;
+}
+.pogeun-paper--back {
+  z-index: 1;
+  top: 42px;
+  left: 43%;
+  width: 194px;
+  --turn: 9deg;
+  --delay: -3.2s;
+  --duration: 8.5s;
+}
+.pogeun-paper--front {
+  z-index: 2;
+  top: 96px;
+  left: 10%;
+  width: 205px;
+  --turn: -8deg;
+  --delay: -1.2s;
+  --duration: 7.7s;
+}
+.art-sticker--pogeun {
+  left: 17%;
+  bottom: 44px;
+  color: #895961;
+  background: #fff4df;
+  --turn: -4deg;
+  --delay: -2.1s;
+}
+.art-note--pogeun {
+  right: 5%;
+  bottom: 68px;
+  color: #8f6872;
+  font-size: 22px;
+  transform: rotate(8deg);
+}
+.art-spark--pogeun {
+  position: absolute;
+  top: 25px;
+  left: 18%;
+  color: #ce8293;
+  font-family: Georgia, serif;
+  font-size: 36px;
+  transform: rotate(-12deg);
 }
 .art-doodle {
   position: absolute;
@@ -1107,6 +1174,25 @@ html[data-motion="off"] .hero-link svg {
     left: 10%;
     bottom: 63px;
   }
+  .pogeun-paper--front {
+    width: 184px;
+    left: 7%;
+    top: 108px;
+  }
+  .pogeun-paper--back {
+    width: 174px;
+    left: 45%;
+    top: 57px;
+  }
+  .art-note--pogeun {
+    right: 2%;
+    bottom: 80px;
+    font-size: 19px;
+  }
+  .art-sticker--pogeun {
+    left: 11%;
+    bottom: 60px;
+  }
 }
 @media (min-width: 701px) and (max-width: 840px) {
   .home-page {
@@ -1383,6 +1469,25 @@ html[data-motion="off"] .hero-link svg {
   .art-sticker--movecut {
     left: 15%;
     bottom: 45px;
+  }
+  .pogeun-paper--front {
+    width: 205px;
+    left: 10%;
+    top: 96px;
+  }
+  .pogeun-paper--back {
+    width: 194px;
+    left: 43%;
+    top: 42px;
+  }
+  .art-sticker--pogeun {
+    left: 17%;
+    bottom: 44px;
+  }
+  .art-note--pogeun {
+    right: 5%;
+    bottom: 68px;
+    font-size: 22px;
   }
   .art-note--movecut {
     font-size: 24px;

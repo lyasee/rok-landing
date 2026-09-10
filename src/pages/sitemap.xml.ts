@@ -16,6 +16,7 @@ export const GET: APIRoute = async () => {
     "/wego/privacy/",
     "/movecut/privacy/en/",
     "/movecut/support/",
+    "/pogeun-diary/support/",
     ...apps.map((a) => appPath(a.data.slug)),
     ...docs.map((d) => documentPath(d.data.app, d.data.type)),
   ];

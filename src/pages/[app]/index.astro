@@ -1,6 +1,7 @@
 ---
 import AppLayout from "@/layouts/AppLayout.astro";
 import MoveCutLanding from "@/components/landing/MoveCutLanding.astro";
+import PogeunDiaryLanding from "@/components/landing/PogeunDiaryLanding.astro";
 import StoreLinks from "@/components/StoreLinks.astro";
 import { getApps, validateRegistry, type AppInfo } from "@/lib/apps";
 export async function getStaticPaths() {
@@ -19,6 +20,8 @@ const { app } = Astro.props;
 {
   app.slug === "movecut" ? (
     <MoveCutLanding app={app} />
+  ) : app.slug === "pogeun-diary" ? (
+    <PogeunDiaryLanding app={app} />
   ) : (
     <AppLayout
       app={app}
