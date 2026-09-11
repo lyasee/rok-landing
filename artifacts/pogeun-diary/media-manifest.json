@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-09-10T05:59:22.462Z",
+  "updatedAt": "2026-09-11T01:25:26.382Z",
   "captureMode": "Native iPhone simulator, synthetic diary records; proportional WebP conversion",
   "images": [
     {
       "scene": "home",
       "source": "assets/store/raw/ios-phone/05-home.png",
-      "sourceSha256": "8568ba03549f874753065aab22c14341efd232c28b338230b860ec9d32da43da",
+      "sourceSha256": "2e63a351333cc58c972719c3d37f9fdcc94cf7e5313d415b9a6651e22caf6f25",
       "websiteFile": "public/images/pogeun-diary/screen-home.webp",
       "width": 660,
       "height": 1434
@@ -13,7 +13,7 @@
     {
       "scene": "editor",
       "source": "assets/store/raw/ios-phone/01-editor.png",
-      "sourceSha256": "c4ebe2e482e5f2f430680e5e03ce67d380e48f2cf6024fd5957205f889807cb9",
+      "sourceSha256": "838d448c21496882e7e883f5c9cacc15392a804983b4f18f2620f907c951a456",
       "websiteFile": "public/images/pogeun-diary/screen-editor.webp",
       "width": 660,
       "height": 1434
@@ -21,7 +21,7 @@
     {
       "scene": "stickers",
       "source": "assets/store/raw/ios-phone/02-stickers.png",
-      "sourceSha256": "b22c4a7265d57825753dcc73fe526008533b4b372caf139ae6cfa85653ccb772",
+      "sourceSha256": "473224b2b4b459c9e79e4504c7944b552232057377811c82db066d2c8b540417",
       "websiteFile": "public/images/pogeun-diary/screen-stickers.webp",
       "width": 660,
       "height": 1434
@@ -29,7 +29,7 @@
     {
       "scene": "calendar",
       "source": "assets/store/raw/ios-phone/04-calendar.png",
-      "sourceSha256": "782ccc06f795660df5211b34015bf6cc85fcf278d66b36a4f879b899993dd7ab",
+      "sourceSha256": "f7c3e1fecaab28e7f97859a7a04432a3841c16010b0aa7652cded865f2655675",
       "websiteFile": "public/images/pogeun-diary/screen-calendar.webp",
       "width": 660,
       "height": 1434
@@ -37,7 +37,7 @@
     {
       "scene": "papers",
       "source": "assets/store/raw/ios-phone/03-papers.png",
-      "sourceSha256": "4309f7006d01a937d4de28cebd6444d70f218d009341880d75e162e7d08bff22",
+      "sourceSha256": "d0417c83e6320ed83764e7bdabc820436f6b10358aec0c64ef1c5c75a8caea11",
       "websiteFile": "public/images/pogeun-diary/screen-papers.webp",
       "width": 660,
       "height": 1434
@@ -45,7 +45,7 @@
     {
       "scene": "backup",
       "source": "assets/store/raw/ios-phone/06-backup.png",
-      "sourceSha256": "9ac49c1a7a7590daad102f51787dae33200484af303dc403c340aa1806441221",
+      "sourceSha256": "bee6b189e6aa034a15fafaa57317f5295ef3168bc8c22a663ecd0a7f6d7fa7da",
       "websiteFile": "public/images/pogeun-diary/screen-backup.webp",
       "width": 660,
       "height": 1434

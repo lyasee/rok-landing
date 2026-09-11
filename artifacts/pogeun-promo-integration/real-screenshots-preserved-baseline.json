@@ -1,0 +1,29 @@
+{
+  "baselineRegistrySha256": "0372c33e953cc8ec4e199deb1ff5a0fed12d5ad3b57f89d9e7a70405b9fa1a3d",
+  "realScreenshots": [
+    {
+      "file": "public/images/pogeun-diary/screen-home.webp",
+      "sha256": "b878e22d03ff3b3cdddc7f1e6af9b013cf3d9e9170b3843480f3e88ccbf8fcf4"
+    },
+    {
+      "file": "public/images/pogeun-diary/screen-editor.webp",
+      "sha256": "bd31715721ae4b5990bc21995d13fb4d3bdef70577b3ac9185f387b8afabe291"
+    },
+    {
+      "file": "public/images/pogeun-diary/screen-stickers.webp",
+      "sha256": "fa3ac33874f5e89c353268aa44a03d6ca90baad8030ace738eb083d5b3e4002c"
+    },
+    {
+      "file": "public/images/pogeun-diary/screen-calendar.webp",
+      "sha256": "93ed9cb06e8c653b6d993915e534ad8b2ec03f503ae98e688beeabb391254e4e"
+    },
+    {
+      "file": "public/images/pogeun-diary/screen-papers.webp",
+      "sha256": "3edc41be27f0f1bdbce0a751591a04611e2d546d936967466879c3369c9264eb"
+    },
+    {
+      "file": "public/images/pogeun-diary/screen-backup.webp",
+      "sha256": "a31fb65b673413857e59016835a83fcb150648000d43c11fd3a726261c2afc7e"
+    }
+  ]
+}

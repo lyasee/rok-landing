@@ -53,3 +53,19 @@
 ## 배포
 
 페이지 내용과 법적 문서는 현재 검토본이며, 법적 문서 승인과 release gate 통과 후 기존 배포 절차를 사용하면 동일한 앱별 경로로 공개할 수 있습니다. 스토어 업로드는 별도 작업입니다.
+
+## 2026-09-11 최신 앱 화면 재동기화
+
+포근일기의 UI/UX 수정과 V3 스티커 적용 이후 iPhone 네이티브 화면 6장을 새로 촬영했고 랜딩페이지의 실제 화면 이미지도 해당 캡처로 교체했습니다.
+`public/images/pogeun-diary/screen-*.webp`는 새 iPhone 원본에서 비율을 유지해 변환했습니다.
+연결 해시와 원본 파일은 `artifacts/pogeun-diary/media-manifest.json`에 기록했습니다.
+스토어용 iPhone·iPad·Android 18장은 앱 프로젝트 `assets/store/`에 별도로 보관되며 AI 홍보 시안과 혼용하지 않습니다.
+
+이번 동기화 후 정적 빌드와 단위 테스트는 통과했습니다. 브라우저 테스트에서 처음 발견된 3건은 실제 법적 문서가 이미 `published`인데 이전 테스트가 `draft`를 가정하던 문제였고, 문서 상태를 되돌리지 않고 해당 기대값을 현재 승인 상태에 맞게 수정했습니다.
+
+## 최종 회귀 결과
+
+최신 iPhone 화면 6장 동기화 후 전체 브라우저 회귀 테스트 **85개가 모두 통과**했습니다.
+포근일기 전용 브라우저 테스트는 **17개 모두 통과**했습니다.
+법적 문서는 실제 `published` 상태를 기준으로 현재 문서는 검색 색인 허용, 버전 이력 경로는 `noindex`로 검증합니다.
+최종 로그: `artifacts/pogeun-diary/recapture-browser-all-final.log`, `recapture-pogeun-final.log`.

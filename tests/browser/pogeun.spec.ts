@@ -120,18 +120,16 @@ test("support uses the confirmed address and discourages sensitive attachments",
   );
 });
 
-test("draft policies and version routes remain review-only and canonical", async ({
+test("published policies and version routes remain canonical and indexable", async ({
   page,
 }) => {
   for (const kind of ["privacy", "terms"] as const) {
     await page.goto(`/pogeun-diary/${kind}/`);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
       "content",
-      "noindex,follow",
+      "index,follow",
     );
-    await expect(page.locator(".document-notice")).toContainText(
-      "공개 전 검토본",
-    );
+    await expect(page.locator(".document-notice")).toHaveCount(0);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       "href",
       `https://rok.gg/pogeun-diary/${kind}/`,
@@ -156,22 +154,22 @@ test("draft policies and version routes remain review-only and canonical", async
   }
 });
 
-test("legal index and sitemap expose only routes safe for the draft state", async ({
+test("legal index and sitemap expose the published Pogeun documents", async ({
   page,
   request,
 }) => {
   await page.goto("/legal/");
   const card = page.locator(".document-card", { hasText: "포근일기" });
   await expect(card).toBeVisible();
-  await expect(card).toContainText("공개 전 검토본");
+  await expect(card).not.toContainText("공개 전 검토본");
   await expect(card.locator('a[href="/pogeun-diary/privacy/"]')).toBeVisible();
   await expect(card.locator('a[href="/pogeun-diary/terms/"]')).toBeVisible();
 
   const xml = await (await request.get("/sitemap.xml")).text();
   expect(xml).toContain("<loc>https://rok.gg/pogeun-diary/</loc>");
   expect(xml).toContain("<loc>https://rok.gg/pogeun-diary/support/</loc>");
-  expect(xml).not.toContain("https://rok.gg/pogeun-diary/privacy/");
-  expect(xml).not.toContain("https://rok.gg/pogeun-diary/terms/");
+  expect(xml).toContain("https://rok.gg/pogeun-diary/privacy/");
+  expect(xml).toContain("https://rok.gg/pogeun-diary/terms/");
 });
 
 for (const [name, width, height] of [

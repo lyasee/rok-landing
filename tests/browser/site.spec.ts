@@ -176,8 +176,8 @@ test("sitemap includes published legal documents and unknown paths return 404", 
   expect(xml).toContain("https://rok.gg/movecut/privacy/");
   expect(xml).toContain("https://rok.gg/pogeun-diary/");
   expect(xml).toContain("https://rok.gg/pogeun-diary/support/");
-  expect(xml).not.toContain("https://rok.gg/pogeun-diary/privacy/");
-  expect(xml).not.toContain("https://rok.gg/pogeun-diary/terms/");
+  expect(xml).toContain("https://rok.gg/pogeun-diary/privacy/");
+  expect(xml).toContain("https://rok.gg/pogeun-diary/terms/");
   expect((await request.get("/missing-app-qa/")).status()).toBe(404);
 });
 test("all local links on new pages resolve to an existing page or anchor", async ({

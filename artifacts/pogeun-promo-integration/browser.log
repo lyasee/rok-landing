@@ -1,0 +1,97 @@
+
+> rok-landing@0.1.0 test:e2e
+> playwright test tests/browser/pogeun.spec.ts
+
+
+Running 17 tests using 1 worker
+
+  ✓   1 tests/browser/pogeun.spec.ts:16:3 › Pogeun Diary route /pogeun-diary/ is generated (4.4s)
+  ✓   2 tests/browser/pogeun.spec.ts:16:3 › Pogeun Diary route /pogeun-diary is generated (1.1s)
+  ✓   3 tests/browser/pogeun.spec.ts:16:3 › Pogeun Diary route /pogeun-diary/support/ is generated (1.2s)
+  ✓   4 tests/browser/pogeun.spec.ts:16:3 › Pogeun Diary route /pogeun-diary/privacy/ is generated (2.0s)
+  ✓   5 tests/browser/pogeun.spec.ts:16:3 › Pogeun Diary route /pogeun-diary/terms/ is generated (1.6s)
+  ✓   6 tests/browser/pogeun.spec.ts:16:3 › Pogeun Diary route /pogeun-diary/privacy/versions/2026-09-10/ is generated (1.8s)
+  ✓   7 tests/browser/pogeun.spec.ts:16:3 › Pogeun Diary route /pogeun-diary/terms/versions/2026-09-10/ is generated (2.3s)
+  ✓   8 tests/browser/pogeun.spec.ts:23:1 › landing metadata, factual headline, and actual example labels are explicit (1.3s)
+  ✓   9 tests/browser/pogeun.spec.ts:45:1 › all six real screenshots and the icon load without third-party requests (2.1s)
+  ✓  10 tests/browser/pogeun.spec.ts:85:1 › unreleased stores stay pending without fake store or purchase links (1.2s)
+  ✓  11 tests/browser/pogeun.spec.ts:100:1 › support uses the confirmed address and discourages sensitive attachments (1.1s)
+  ✘  12 tests/browser/pogeun.spec.ts:123:1 › draft policies and version routes remain review-only and canonical (5.8s)
+  ✘  13 tests/browser/pogeun.spec.ts:159:1 › legal index and sitemap expose only routes safe for the draft state (7.1s)
+  ✓  14 tests/browser/pogeun.spec.ts:181:3 › landing and support do not overflow at mobile-360 (4.9s)
+  ✓  15 tests/browser/pogeun.spec.ts:181:3 › landing and support do not overflow at desktop (3.5s)
+  ✓  16 tests/browser/pogeun.spec.ts:204:1 › landing works without JavaScript and all internal links resolve (3.9s)
+  ✓  17 tests/browser/pogeun.spec.ts:228:1 › capture Pogeun Diary desktop and 360px mobile layouts (10.5s)
+
+
+  1) tests/browser/pogeun.spec.ts:123:1 › draft policies and version routes remain review-only and canonical 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('meta[name="robots"]')
+    Expected: "noindex,follow"
+    Received: "index,follow"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" locator('meta[name="robots"]') with timeout 5000ms
+      - waiting for locator('meta[name="robots"]')
+        13 × locator resolved to <meta name="robots" content="index,follow"/>
+           - unexpected value "index,follow"
+
+
+      126 |   for (const kind of ["privacy", "terms"] as const) {
+      127 |     await page.goto(`/pogeun-diary/${kind}/`);
+    > 128 |     await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+          |                                                       ^
+      129 |       "content",
+      130 |       "noindex,follow",
+      131 |     );
+        at /Users/smlee/projects/game/rok-landing/tests/browser/pogeun.spec.ts:128:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/pogeun-draft-policies-and--b3d85-n-review-only-and-canonical/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/pogeun-draft-policies-and--b3d85-n-review-only-and-canonical/error-context.md
+
+  2) tests/browser/pogeun.spec.ts:159:1 › legal index and sitemap expose only routes safe for the draft state 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('.document-card').filter({ hasText: '포근일기' })
+    Timeout: 5000ms
+    - Expected substring  - 1
+    + Received string     + 2
+
+    - 공개 전 검토본
+    +    포근일기   
+    + 서비스 소개↗   개인정보처리방침  현재 문서   서비스 이용약관  현재 문서     
+
+    Call log:
+      - Expect "toContainText" locator('.document-card').filter({ hasText: '포근일기' }) with timeout 5000ms
+      - waiting for locator('.document-card').filter({ hasText: '포근일기' })
+        13 × locator resolved to <article class="document-card">…</article>
+           - unexpected value "   포근일기   
+    서비스 소개↗   개인정보처리방침  현재 문서   서비스 이용약관  현재 문서     "
+
+
+      164 |   const card = page.locator(".document-card", { hasText: "포근일기" });
+      165 |   await expect(card).toBeVisible();
+    > 166 |   await expect(card).toContainText("공개 전 검토본");
+          |                      ^
+      167 |   await expect(card.locator('a[href="/pogeun-diary/privacy/"]')).toBeVisible();
+      168 |   await expect(card.locator('a[href="/pogeun-diary/terms/"]')).toBeVisible();
+      169 |
+        at /Users/smlee/projects/game/rok-landing/tests/browser/pogeun.spec.ts:166:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/pogeun-legal-index-and-sit-6031d-es-safe-for-the-draft-state/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/pogeun-legal-index-and-sit-6031d-es-safe-for-the-draft-state/error-context.md
+
+  2 failed
+    tests/browser/pogeun.spec.ts:123:1 › draft policies and version routes remain review-only and canonical 
+    tests/browser/pogeun.spec.ts:159:1 › legal index and sitemap expose only routes safe for the draft state 
+  15 passed (2.6m)

@@ -1,0 +1,16 @@
+{
+  "checks": [
+    {
+      "name": "desktop",
+      "passed": true,
+      "loadedAppImages": 8,
+      "reducedMotion": true
+    },
+    {
+      "name": "mobile",
+      "passed": true,
+      "loadedAppImages": 8,
+      "reducedMotion": true
+    }
+  ]
+}

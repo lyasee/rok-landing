@@ -1,0 +1,69 @@
+
+> rok-landing@0.1.0 build
+> npm run content:check && astro check && astro build
+
+
+> rok-landing@0.1.0 content:check
+> node scripts/check-content.mjs
+
+{
+  "ok": true,
+  "release": false,
+  "apps": 3,
+  "visibleApps": 3,
+  "documents": 6,
+  "drafts": 0,
+  "errors": []
+}
+00:12:29 [content] Syncing content
+00:12:29 [content] Synced content
+00:12:29 [types] Generated 2.10s
+00:12:29 [check] Getting diagnostics for Astro files in /Users/smlee/projects/game/rok-landing...
+Result (42 files): 
+- 0 errors
+- 0 warnings
+- 0 hints
+
+00:13:00 [content] Syncing content
+00:13:00 [content] Synced content
+00:13:00 [types] Generated 2.19s
+00:13:00 [build] output: "static"
+00:13:00 [build] mode: "static"
+00:13:00 [build] directory: /Users/smlee/projects/game/rok-landing/dist/
+00:13:00 [build] Collecting build info...
+00:13:00 [build] ✓ Completed in 2.22s.
+00:13:00 [build] Building static entrypoints...
+00:13:04 [vite] ✓ built in 4.13s
+00:13:04 [vite] ✓ built in 160ms
+00:13:04 [build] Rearranging server assets...
+
+ generating static routes 
+00:13:05   ├─ /404.html (+35ms) 
+00:13:05   ├─ /legal/index.html (+43ms) 
+00:13:05   ├─ /movecut/privacy/en/index.html (+22ms) 
+00:13:05   ├─ /movecut/support/index.html (+13ms) 
+00:13:05   ├─ /pogeun-diary/support/index.html (+16ms) 
+00:13:05   ├─ /sitemap.xml (+17ms) 
+00:13:05   ├─ /wego/privacy/index.html (+18ms) 
+00:13:05   ├─ /wego/index.html (+70ms) 
+00:13:05   ├─ /mecodi/privacy/versions/2026-09-08/index.html (+57ms) 
+00:13:05   ├─ /mecodi/terms/versions/2026-09-08/index.html (+26ms) 
+00:13:05   ├─ /movecut/privacy/versions/2026-09-09/index.html (+12ms) 
+00:13:05   ├─ /movecut/terms/versions/2026-09-09/index.html (+13ms) 
+00:13:05   ├─ /pogeun-diary/privacy/versions/2026-09-10/index.html (+14ms) 
+00:13:05   ├─ /pogeun-diary/terms/versions/2026-09-10/index.html (+31ms) 
+00:13:05   ├─ /mecodi/privacy/index.html (+16ms) 
+00:13:05   ├─ /mecodi/terms/index.html (+33ms) 
+00:13:05   ├─ /movecut/privacy/index.html (+30ms) 
+00:13:05   ├─ /movecut/terms/index.html (+20ms) 
+00:13:05   ├─ /pogeun-diary/privacy/index.html (+14ms) 
+00:13:05   ├─ /pogeun-diary/terms/index.html (+5ms) 
+00:13:05   ├─ /mecodi/index.html (+20ms) 
+00:13:05   ├─ /movecut/index.html (+20ms) 
+00:13:05   ├─ /pogeun-diary/index.html (+11ms) 
+00:13:05   ├─ /index.html (+30ms) 
+00:13:05 ✓ Completed in 742ms.
+
+00:13:05 [build] ✓ Completed in 5.18s.
+00:13:05 [build] 23 page(s) built in 7.46s
+00:13:05 [build] Complete!

@@ -1,0 +1,109 @@
+
+> rok-landing@0.1.0 test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: scaffold creates one app and two Markdown documents without making them public
+ok 1 - scaffold creates one app and two Markdown documents without making them public
+  ---
+  duration_ms: 49.706667
+  ...
+# Subtest: existing app is never overwritten
+ok 2 - existing app is never overwritten
+  ---
+  duration_ms: 16.970541
+  ...
+# Subtest: rejects unsafe or reserved slug: ../escape
+ok 3 - rejects unsafe or reserved slug: ../escape
+  ---
+  duration_ms: 6.684875
+  ...
+# Subtest: rejects unsafe or reserved slug: Bad App
+ok 4 - rejects unsafe or reserved slug: Bad App
+  ---
+  duration_ms: 1.736791
+  ...
+# Subtest: rejects unsafe or reserved slug: wego
+ok 5 - rejects unsafe or reserved slug: wego
+  ---
+  duration_ms: 2.74325
+  ...
+# Subtest: rejects unsafe or reserved slug: legal
+ok 6 - rejects unsafe or reserved slug: legal
+  ---
+  duration_ms: 5.82025
+  ...
+# Subtest: rejects unsafe or reserved slug: images
+ok 7 - rejects unsafe or reserved slug: images
+  ---
+  duration_ms: 2.316833
+  ...
+# Subtest: rejects unsafe or reserved slug: 
+ok 8 - rejects unsafe or reserved slug: 
+  ---
+  duration_ms: 6.678708
+  ...
+# Subtest: rejects unsafe or reserved slug: https://example.com
+ok 9 - rejects unsafe or reserved slug: https://example.com
+  ---
+  duration_ms: 10.460834
+  ...
+# Subtest: hidden draft app does not block another app release
+ok 10 - hidden draft app does not block another app release
+  ---
+  duration_ms: 35.945125
+  ...
+# Subtest: visible draft app blocks publication but allows local preview
+ok 11 - visible draft app blocks publication but allows local preview
+  ---
+  duration_ms: 87.302333
+  ...
+# Subtest: every required document needs exactly one current version
+ok 12 - every required document needs exactly one current version
+  ---
+  duration_ms: 28.698
+  ...
+# Subtest: missing assets are rejected
+ok 13 - missing assets are rejected
+  ---
+  duration_ms: 29.11075
+  ...
+# Subtest: store redirects and JavaScript links are not allowed
+ok 14 - store redirects and JavaScript links are not allowed
+  ---
+  duration_ms: 14.509625
+  ...
+# Subtest: published flag cannot silently bypass the legal review
+ok 15 - published flag cannot silently bypass the legal review
+  ---
+  duration_ms: 17.820042
+  ...
+# Subtest: malformed Markdown frontmatter fails clearly
+ok 16 - malformed Markdown frontmatter fails clearly
+  ---
+  duration_ms: 2.149333
+  ...
+# Subtest: both legal document types are required for shared navigation
+ok 17 - both legal document types are required for shared navigation
+  ---
+  duration_ms: 15.05
+  ...
+# Subtest: reviewed metadata cannot publish placeholder legal body
+ok 18 - reviewed metadata cannot publish placeholder legal body
+  ---
+  duration_ms: 24.09775
+  ...
+# Subtest: reviewed app and actual legal content can pass the release gate
+ok 19 - reviewed app and actual legal content can pass the release gate
+  ---
+  duration_ms: 13.367458
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 753.364792
